@@ -1,19 +1,21 @@
 # MRI Hardware Studio
 
-**An AI-native skill suite for MRI RF coil design and simulation — from blank project to validated B1⁺/SAR results.**
+**An LLM-based agentic system for high-field MRI RF coil design and optimization.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 [![Platform: Windows + CST 2024](https://img.shields.io/badge/Platform-Windows%20%2B%20CST%202024-blue.svg)]()
 [![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-red.svg)]()
 
-MRI Hardware Studio is a collection of **VS Code Copilot skills** that give an AI agent the full knowledge stack to drive [CST Studio Suite](https://www.3ds.com/products/simulia/cst-studio-suite) for MRI RF coil design — covering geometry modeling, EM simulation, circuit co-simulation, B1⁺ field analysis, SAR computation, and paper reproduction — all through the [CST MCP server](external/CST-MCP).
+**MRI Hardware Studio** is an LLM-based agent system targeting the full lifecycle of high-field MRI RF coil design and optimization — from coil topology selection and 3D EM modeling, through circuit co-simulation and B1⁺/SAR analysis, to automated parameter optimization and result reporting. The long-term vision is an AI co-engineer that can autonomously navigate the hardware design loop for MRI coils at any field strength.
+
+**Current release (v1.0 — Phase 1)** delivers a set of foundational workflow skills that give an AI agent the structured knowledge to drive [CST Studio Suite](https://www.3ds.com/products/simulia/cst-studio-suite) through the [CST MCP server](external/CST-MCP): covering geometry modeling, solver setup, circuit matching, B1⁺/SAR post-processing, paper reproduction, and training data preparation.
 
 ---
 
 ## News 🔥
 
-- **[2026-08]** `mri-coil-design-workflow` v1.0 released — end-to-end skill suite covering 7 T dipole design, paper reproduction, and training data preparation pipelines.
+- **[2026-08]** `mri-coil-design-workflow` v1.0 released — end-to-end skill suite covering basic single-coil design, paper reproduction, and training data preparation pipelines.
 - **[coming soon]** Technical report on arXiv — system design, benchmark results, and case studies.
 - **[coming soon]** Demo videos: dipole-from-scratch and paper-reproduction workflows.
 
@@ -78,15 +80,9 @@ skills/
 | Mode | Entry Point |
 |---|---|
 | Inspect unknown `.cst` project | `recipes/inspect/inspect-unknown-project.md` |
-| Build dipole from scratch | `recipes/build/dipole-from-scratch.md` |
-| B1⁺ field pipeline | `recipes/b1-sar/b1-field-pipeline.md` |
-| SAR field export | `recipes/b1-sar/sar-field-export.md` |
-| Circuit matching (Smith chart) | `recipes/build/smith-matching.md` |
-| Demo / screen-capture recording | `recipes/build/demo-recording-mode.md` |
+| Build coil from scratch | `recipes/build/dipole-from-scratch.md` |
+| B1⁺ field & SAR post-processing | `recipes/b1-sar/b1-field-pipeline.md` |
 | Paper reproduction (end-to-end) | `recipes/paper-reproduction/orchestrator.md` |
-| Training data preparation | `recipes/data-prep/data-prep-complete-case.md` |
-| Parameter sweep & optimization | `recipes/optimize/parameter-sweep-fom-optimization.md` |
-| Official component replay/learning | `recipes/reference-repro/official-component-repro-learning.md` |
 
 ---
 
@@ -98,8 +94,8 @@ skills/
 |---|---|
 | **OS** | Windows (CST uses COM/`pythoncom`) |
 | **CST Studio Suite** | 2024 or newer; license: HF Time Domain + HF Frequency Domain + Design Studio |
-| **Python** | 3.6 – 3.11 (hard ceiling; CST bindings fail on 3.12+). Recommended: **3.10** |
-| **VS Code** | With [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) (agent mode) |
+| **Python** | Recommended: **3.10** |
+| **AI Agent** | [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) or [OpenAI Codex](https://platform.openai.com/docs/codex) |
 | **RAM** | ≥ 16 GB (32 GB+ recommended for lossy-body B1⁺ simulations) |
 
 ### Step 1 — Install Python dependencies
@@ -138,21 +134,21 @@ See `skills/mri-coil-design-workflow/driving/mcp-setup.md` for full setup and ve
 
 ### Step 3 — Register the skill in VS Code Copilot
 
-Copy (or symlink) the skill into your VS Code Copilot skills directory:
+Copy (or symlink) the skill into your agent skills directory:
 
 ```
 # Place mri-coil-design-workflow under your VS Code skills folder:
 # Windows: %APPDATA%\Code\User\prompts\  (or .agents/skills/ in your workspace)
 ```
 
-In GitHub Copilot agent mode, the skill is auto-discovered by its YAML front matter in `SKILL.md`.
+In agent, the skill is auto-discovered by its YAML front matter in `SKILL.md`.
 
 ### Step 4 — Run your first workflow
 
-Open GitHub Copilot Chat (agent mode) and ask:
+Open agent and ask:
 
 ```
-Build a 7 T dipole antenna from scratch, simulate it, tune the circuit, and show me the B1+ map.
+Build a dipole antenna from scratch, simulate it, tune the circuit, and show me the B1+ map.
 ```
 
 The agent will route to `recipes/build/dipole-from-scratch.md` and execute the full pipeline.
@@ -163,19 +159,19 @@ The agent will route to `recipes/build/dipole-from-scratch.md` and execute the f
 
 ```
 ┌─────────────────────────────────────────────┐
-│          GitHub Copilot (Agent Mode)         │
+│                Agent                        │
 │  ┌─────────────────────────────────────┐    │
 │  │   mri-coil-design-workflow skill    │    │
 │  │  (decision layer: recipes, physics, │    │
 │  │   artifact pipeline, pitfalls)      │    │
 │  └──────────────┬──────────────────────┘    │
-│                 │ MCP tool calls             │
+│                 │ MCP tool calls            │
 │  ┌──────────────▼──────────────────────┐    │
 │  │       CST MCP Server                │    │
 │  │  (execution layer: VBA execution,   │    │
 │  │   result reading, field export)     │    │
 │  └──────────────┬──────────────────────┘    │
-│                 │ COM / Python bindings      │
+│                 │ COM / Python bindings     │
 │  ┌──────────────▼──────────────────────┐    │
 │  │     CST Studio Suite 2024           │    │
 │  │  (EM solver, circuit solver,        │    │
@@ -205,26 +201,20 @@ All generated `.bas` files pass through `scripts/lint_vba.py` before execution. 
 | Fractionated dipole antenna | 5 T | 212.9 MHz | ✅ Validated |
 | Fractionated dipole antenna | 7 T | 297 MHz | ✅ Validated |
 | Single loop element | 3 T | 127.7 MHz | ✅ Validated |
-| Birdcage coil | 3 T / 5 T | — | 🔄 In progress |
-| Multi-channel pTx array | 7 T | 297 MHz | 📋 Planned |
+| More basic coils | 3 T / 5 T | — | 🔄 In progress |
+| Multi-channel RF array | 5 T | - | 📋 Planned |
 
 ---
 
-## Reproduced Papers
+## Reproduction Notes & Cases
 
-The skill includes reproduction notes for reference cases:
+The skill ships a `notes/` library containing distilled CST manual knowledge, simulation experience logs, and step-by-step reproduction records for 9 CST official reference antennas and MRI coils (`notes/repro-01` … `repro-09`), accumulated during the development of the system.
 
-| Case | Description | Repro Log |
-|---|---|---|
-| Dipole antenna | CST reference dipole | `notes/repro-01-dipole-antenna.md` |
-| Dipole array | 2-element array | `notes/repro-02-dipole-array.md` |
-| MRI coil | CST reference MRI coil | `notes/repro-03-mri-coil.md` |
-| Patch antenna (FD) | Frequency-domain patch | `notes/repro-04-patch-fd.md` |
-| Single coil element | MRI single element | `notes/repro-05-single-coil.md` |
-| Fractionated dipole | Raaijmakers et al. 2016 | `notes/repro-06-fractionated-dipole.md` |
-| Circular patch (TD) | Time-domain circular patch | `notes/repro-07-circular-patch-td.md` |
-| Circular resonator | Resonator reference | `notes/repro-08-circular-resonator.md` |
-| Circular patch (multilayer) | Multilayer patch | `notes/repro-09-circular-patch-multilayer.md` |
+For paper-level reproduction, a full end-to-end case bundle is included under `skills/mri-coil-design-workflow/recipes/paper-reproduction/cases/`, currently featuring:
+
+- **Raaijmakers et al. 2016 — Fractionated Dipole Antenna** (`cases/raaijmakers-2016-fractionated-dipole/`): paper brief, reproduction recipe, and demo-recording mode.
+
+
 
 ---
 
