@@ -1,0 +1,153 @@
+{
+  "schema_version": "data_prep.case_record.v1",
+  "record_id": null,
+  "case_matrix_id": null,
+  "library_role": "global_complete",
+  "simulation_role": null,
+  "source": {
+    "source_project_path": null,
+    "project_copy_path": null,
+    "build_manifest_path": null,
+    "model_history_snapshot_path": null,
+    "schematic_snapshot_path": null
+  },
+  "geometry": {
+    "family": null,
+    "topology": null,
+    "prototype_fidelity": null,
+    "model_variant": "substrate_free_coil_phantom",
+    "include_substrate": false,
+    "support_stack": "none",
+    "L_line_mm": null,
+    "strip_width_mm": null,
+    "coil_to_phantom_mm": null,
+    "feed_gap_mm": 2.0,
+    "substrate_pec_thickness_mm": null,
+    "board_width_mm": null,
+    "board_length_mm": null,
+    "segment_count_total": null,
+    "seg_gap_mm": null,
+    "segment_lengths_mm": [],
+    "bridge_count_total": null,
+    "bridge_positions_mm": []
+  },
+  "materials_and_load": {
+    "phantom_eps_r": 78.0,
+    "phantom_sigma_S_per_m": 0.47,
+    "phantom_rho_kg_per_m3": 1000.0,
+    "phantom_size_mm": [270.0, 650.0, 300.0],
+    "fr4_eps_r": null,
+    "fr4_tand": null,
+    "polycarbonate_eps_r": null,
+    "foam_eps_r": null
+  },
+  "electrical_design": {
+    "freq_MHz": 210.0,
+    "port_impedance_ohm": 50.0,
+    "field_source_id": null,
+    "network_role": null,
+    "matching_components": {
+      "Lt_nH": null,
+      "Lp_nH": null,
+      "Ct_pF": null,
+      "Cp_pF": null
+    },
+    "fractionated_bridge": {
+      "lt_bridge_mode": null,
+      "bridge_L_nH": null,
+      "bridge_C_pF": null,
+      "bridge_R_ohm": 0.0
+    }
+  },
+  "simulation": {
+    "solver_type": null,
+    "mesh_type": null,
+    "mesh_step_or_accuracy": null,
+    "monitors": ["h-field", "e-field", "loss"],
+    "b0_direction": "+z",
+    "normalization": "1W accepted power",
+    "export_grid_step_mm": null,
+    "export_subvolume_mm": null
+  },
+  "electrical_state": {
+    "p_accepted_W": null,
+    "s11_210MHz_dB": null,
+    "s11_min_dB": null,
+    "resonant_frequency_MHz": null,
+    "input_R_ohm": null,
+    "input_X_ohm": null,
+    "loaded_Q_est": null
+  },
+  "field_artifacts": {
+    "hfield_h5": null,
+    "efield_h5": null,
+    "loss_h5": null,
+    "sar10g_h5": null,
+    "surface_current_h5": null,
+    "sparams_csv": null,
+    "power_accepted_csv": null,
+    "impedance_csv": null
+  },
+  "b1_signature": {
+    "unit": "uT/sqrt(W accepted)",
+    "b1p_surface_mean_uT_per_sqrtW": null,
+    "b1p_30mm_mean_uT_per_sqrtW": null,
+    "b1p_60mm_mean_uT_per_sqrtW": null,
+    "b1p_100mm_mean_uT_per_sqrtW": null,
+    "b1p_at_10cm_mean_uT_per_sqrtW": null,
+    "b1p_at_10cm_p10_uT_per_sqrtW": null,
+    "b1p_at_10cm_p50_uT_per_sqrtW": null,
+    "b1p_at_10cm_p90_uT_per_sqrtW": null,
+    "b1p_peak_uT_per_sqrtW": null,
+    "b1p_peak_xyz_mm": null,
+    "cov_roi": null,
+    "half_value_depth_mm": null,
+    "penetration_auc_0_150_uTmm_per_sqrtW": null,
+    "depth_profile_csv": null,
+    "lateral_profile_csv": null,
+    "slices_48x48_npz": null
+  },
+  "sar_signature": {
+    "sar_status": null,
+    "sar_metric_source": null,
+    "unit": "W/kg @ 1W accepted",
+    "sar10g_max_W_per_kg_per_W": null,
+    "sar10g_p99_W_per_kg_per_W": null,
+    "sar10g_roi_mean_W_per_kg_per_W": null,
+    "sar_hotspot_xyz_mm": null,
+    "sar_hotspot_depth_mm": null,
+    "sar_hotspot_distance_to_conductor_mm": null,
+    "sar_hotspot_concentration": null,
+    "sar_efficiency_10cm": null,
+    "depth_profile_csv": null,
+    "slices_48x48_npz": null
+  },
+  "current_signature": {
+    "current_status": null,
+    "current_peak_A_per_sqrtW": null,
+    "current_mean_A_per_sqrtW": null,
+    "current_center_to_end_ratio": null,
+    "current_left_right_symmetry_error": null,
+    "current_phase_span_deg": null,
+    "current_hotspot_region": null
+  },
+  "learning_card": {
+    "design_tokens": [],
+    "field_summary_text": null,
+    "dominant_effect_labels": [],
+    "prompt_card_jsonl_path": null
+  },
+  "lineage": {
+    "parent_record_id": null,
+    "action_type": null,
+    "changed_params_json": null,
+    "direction_label": null
+  },
+  "qa": {
+    "qa_status": "needs_validation",
+    "qa_flags": [],
+    "schema_pass": false,
+    "field_archive_status": null,
+    "notes": null
+  }
+}

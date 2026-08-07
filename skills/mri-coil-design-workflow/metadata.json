@@ -1,0 +1,11 @@
+{
+  "name": "mri-coil-design-workflow",
+  "dir_name": "mri-coil-design-workflow",
+  "category": "electromagnetic-simulation",
+  "status": "local",
+  "source": "local",
+  "source_url": "https://github.com/[your-org]/MRI-Hardware-Studio",
+  "license": "MIT",
+  "distribution": "public",
+  "description": "Workflow and decision-layer skill for MRI RF coil design/inspection/simulation in CST Studio Suite through the CST MCP: EM + circuit co-simulation + post-processing, and extraction/validation of MRI metrics (S-parameters, resonance, B1+ field & homogeneity, SAR)."
+}

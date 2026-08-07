@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# CST Studio Suite project output files
+*.log
+*.lck
+*.bak
+# Keep .cst project files only if intentionally included
+# *.cst
+
+# Result directories (potentially large — keep structure, exclude data)
+results/
+results_backup/
+results_data_prep/
+results_data_prep_APFD/
+results_paper_repro/
+
+# Compiled VBA artifacts (generated at runtime)
+**/__pycache__/
+scripts/__pycache__/
+
+# Temporary files
+tmp/
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / environment files
+.env
+.env.*
+*.env
+secrets.json

@@ -1,0 +1,60 @@
+{# ===== Tier A template: 3D field export (SelectTreeItem + ASCIIExport) =====
+   Renders a MACRO (Sub Main) — run via cst_execute_vba_tool (kind=macro),
+   NOT add_to_history. Distilled from ../building-blocks/vba-blocks/field-export.md.
+   Iterates candidate node paths (version/suffix vary) and exports the first
+   that selects. Vars (optional; defaults = dipole B1+ H-field @0.21 [AC1]):
+     field_name (h-field|e-field), field_folder (H-Field|E-Field),
+     freq (0.21), task (AC1), out_path, log_path, file_type (hdf5|ascii),
+     step (1|2), use_subvolume (True|False),
+     x_min,x_max,y_min,y_max,z_min,z_max
+#}
+Sub Main
+  Dim f As Integer
+  f = FreeFile
+  Open "{{ log_path | default('C:\\Users\\admin\\AppData\\Local\\Temp\\field_export.txt') }}" For Output As #f
+  On Error Resume Next
+  Dim cands(5) As String
+  cands(0) = "2D/3D Results\{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }}) [{{ task | default('AC1') }}]"
+  cands(1) = "2D/3D Results\{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }} GHz) [{{ task | default('AC1') }}]"
+  cands(2) = "3D Results\{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }}) [{{ task | default('AC1') }}]"
+  cands(3) = "3D Results\{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }} GHz) [{{ task | default('AC1') }}]"
+  cands(4) = "{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }}) [{{ task | default('AC1') }}]"
+  cands(5) = "{{ field_folder | default('H-Field') }}\{{ field_name | default('h-field') }} (f={{ freq | default('0.21') }} GHz) [{{ task | default('AC1') }}]"
+  Dim chosen As String
+  chosen = ""
+  Dim i As Integer
+  For i = 0 To 5
+    Err.Clear
+    SelectTreeItem cands(i)
+    If Err.Number = 0 Then
+      chosen = cands(i)
+      Print #f, "SELECTED OK: " & chosen
+      Exit For
+    Else
+      Print #f, "fail[" & i & "]: " & cands(i) & " -> Err" & Err.Number
+    End If
+  Next i
+  If chosen = "" Then
+    Print #f, "NO FIELD NODE FOUND"
+    Close #f
+    Exit Sub
+  End If
+  With ASCIIExport
+    .Reset
+    .SetfileType "{{ file_type | default('hdf5') }}"
+    .FileName "{{ out_path | default('D:\\ght\\SAIS\\MRI_agent\\results\\hfield_ac.h5') }}"
+    .Mode "FixedWidth"
+    .Step {{ step | default(1) }}
+{% if use_subvolume | default(true) %}
+    .UseSubvolume True
+    .SetSubvolume {{ x_min | default(-60) }}, {{ x_max | default(60) }}, {{ y_min | default(-150) }}, {{ y_max | default(150) }}, {{ z_min | default(-120.5) }}, {{ z_max | default(-20.5) }}
+{% else %}
+    .UseSubvolume False
+{% endif %}
+    .ExportCoordinatesInMeter False
+    .Execute
+  End With
+  Print #f, "EXPORT DONE err=" & Err.Number & " desc=" & Err.Description
+  Print #f, "DONE"
+  Close #f
+End Sub

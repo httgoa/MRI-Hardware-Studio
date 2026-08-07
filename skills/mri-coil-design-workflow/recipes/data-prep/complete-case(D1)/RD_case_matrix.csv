@@ -1,0 +1,54 @@
+case_matrix_id,family,role,source_seed,simulation_role,network_role,L_line_mm,strip_width_mm,coil_to_phantom_mm,feed_gap_mm,segment_count_total,seg_gap_mm,lt_bridge_mode,bridge_L_nH,bridge_C_pF,prototype_fidelity,notes,parent_case_matrix_id,action_type,changed_params,direction_label
+RD_A01,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,300,10,40,2,,,,,,regular_dipole,canonical center baseline
+RD_A02,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,200,10,40,2,,,,,,regular_dipole,short dipole
+RD_A03,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,250,10,40,2,,,,,,regular_dipole,mid-short dipole
+RD_A04,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,350,10,40,2,,,,,,regular_dipole,long dipole
+RD_A05,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,300,5,40,2,,,,,,regular_dipole,narrow conductor at center length
+RD_A06,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,300,10,20.5,2,,,,,,regular_dipole,near phantom
+RD_A07,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,300,10,80,2,,,,,,regular_dipole,farther from phantom
+RD_A08,regular_dipole,anchor,template,direct_unmatched_performance,direct_port,350,5,100,2,,,,,,regular_dipole,long narrow far corner
+RD_S00,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,200,5,60,2,,,,,,regular_dipole,sparse fill
+RD_S01,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,200,10,100,2,,,,,,regular_dipole,sparse fill
+RD_S02,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,250,5,20.5,2,,,,,,regular_dipole,sparse fill
+RD_S03,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,250,10,80,2,,,,,,regular_dipole,sparse fill
+RD_S04,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,300,5,60,2,,,,,,regular_dipole,sparse fill
+RD_S05,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,300,10,100,2,,,,,,regular_dipole,sparse fill
+RD_S06,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,350,5,20.5,2,,,,,,regular_dipole,sparse fill
+RD_S07,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,350,10,60,2,,,,,,regular_dipole,sparse fill
+RD_S08,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,225,5,40,2,,,,,,regular_dipole,sparse fill
+RD_S09,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,225,10,80,2,,,,,,regular_dipole,sparse fill
+RD_S10,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,275,5,100,2,,,,,,regular_dipole,sparse fill
+RD_S11,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,275,10,20.5,2,,,,,,regular_dipole,sparse fill
+RD_S12,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,325,5,80,2,,,,,,regular_dipole,sparse fill
+RD_S13,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,325,10,20.5,2,,,,,,regular_dipole,sparse fill
+RD_S14,regular_dipole,space_fill,template,direct_unmatched_performance,direct_port,350,5,60,2,,,,,,regular_dipole,sparse fill
+RD_P01,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,270,10,40,2,,,,,,regular_dipole,L-10% neighbor of RD_A01,RD_A01,single_param_perturbation,L_line_mm,L-10%
+RD_P02,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,330,10,40,2,,,,,,regular_dipole,L+10% neighbor of RD_A01,RD_A01,single_param_perturbation,L_line_mm,L+10%
+RD_P03,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,8,40,2,,,,,,regular_dipole,W-20% neighbor of RD_A01,RD_A01,single_param_perturbation,strip_width_mm,W-20%
+RD_P04,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,12,40,2,,,,,,regular_dipole,W+20% neighbor of RD_A01,RD_A01,single_param_perturbation,strip_width_mm,W+20%
+RD_P05,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,30,2,,,,,,regular_dipole,gap-10mm neighbor of RD_A01,RD_A01,single_param_perturbation,coil_to_phantom_mm,gap-10mm
+RD_P06,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,50,2,,,,,,regular_dipole,gap+10mm neighbor of RD_A01,RD_A01,single_param_perturbation,coil_to_phantom_mm,gap+10mm
+RD_P07,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,270,10,20.5,2,,,,,,regular_dipole,L-10% neighbor of RD_A06 near-phantom high-B1/high-SAR regime,RD_A06,single_param_perturbation,L_line_mm,L-10%
+RD_P08,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,330,10,20.5,2,,,,,,regular_dipole,L+10% neighbor of RD_A06,RD_A06,single_param_perturbation,L_line_mm,L+10%
+RD_P09,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,8,20.5,2,,,,,,regular_dipole,W-20% neighbor of RD_A06,RD_A06,single_param_perturbation,strip_width_mm,W-20%
+RD_P10,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,12,20.5,2,,,,,,regular_dipole,W+20% neighbor of RD_A06,RD_A06,single_param_perturbation,strip_width_mm,W+20%
+RD_P11,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,25.5,2,,,,,,regular_dipole,gap+5mm reduced-step neighbor of RD_A06 -- standard -10mm (10.5mm) would breach the near-phantom safe-standoff floor -- verify with geometry validator before build,RD_A06,single_param_perturbation,coil_to_phantom_mm,gap+5mm reduced from standard -10mm; -10mm direction skipped for floor safety
+RD_P12,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,30.5,2,,,,,,regular_dipole,gap+10mm neighbor of RD_A06,RD_A06,single_param_perturbation,coil_to_phantom_mm,gap+10mm
+RD_P13,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,270,10,80,2,,,,,,regular_dipole,L-10% neighbor of RD_A07 low-SAR far regime,RD_A07,single_param_perturbation,L_line_mm,L-10%
+RD_P14,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,330,10,80,2,,,,,,regular_dipole,L+10% neighbor of RD_A07,RD_A07,single_param_perturbation,L_line_mm,L+10%
+RD_P15,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,8,80,2,,,,,,regular_dipole,W-20% neighbor of RD_A07,RD_A07,single_param_perturbation,strip_width_mm,W-20%
+RD_P16,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,12,80,2,,,,,,regular_dipole,W+20% neighbor of RD_A07,RD_A07,single_param_perturbation,strip_width_mm,W+20%
+RD_P17,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,70,2,,,,,,regular_dipole,gap-10mm neighbor of RD_A07,RD_A07,single_param_perturbation,coil_to_phantom_mm,gap-10mm
+RD_P18,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,300,10,90,2,,,,,,regular_dipole,gap+10mm neighbor of RD_A07,RD_A07,single_param_perturbation,coil_to_phantom_mm,gap+10mm
+RD_P19,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,315,5,100,2,,,,,,regular_dipole,L-10% neighbor of RD_A08 weakest-performance corner,RD_A08,single_param_perturbation,L_line_mm,L-10%
+RD_P20,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,385,5,100,2,,,,,,regular_dipole,L+10% neighbor of RD_A08,RD_A08,single_param_perturbation,L_line_mm,L+10%
+RD_P21,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,350,4,100,2,,,,,,regular_dipole,W-20% neighbor of RD_A08,RD_A08,single_param_perturbation,strip_width_mm,W-20%
+RD_P22,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,350,6,100,2,,,,,,regular_dipole,W+20% neighbor of RD_A08,RD_A08,single_param_perturbation,strip_width_mm,W+20%
+RD_P23,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,350,5,90,2,,,,,,regular_dipole,gap-10mm neighbor of RD_A08,RD_A08,single_param_perturbation,coil_to_phantom_mm,gap-10mm
+RD_P24,regular_dipole,perturbation,template,direct_unmatched_performance,direct_port,350,5,110,2,,,,,,regular_dipole,gap+10mm neighbor of RD_A08,RD_A08,single_param_perturbation,coil_to_phantom_mm,gap+10mm
+RD_I01,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,330,10,50,2,,,,,,regular_dipole,L+10% and gap+10mm joint change from RD_A01 -- compare against summed RD_P02+RD_P06 deltas,RD_A01,two_param_interaction,L_line_mm;coil_to_phantom_mm,L+10%;gap+10mm
+RD_I02,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,330,10,30,2,,,,,,regular_dipole,L+10% and gap-10mm joint change from RD_A01 -- compare against summed RD_P02+RD_P05 deltas,RD_A01,two_param_interaction,L_line_mm;coil_to_phantom_mm,L+10%;gap-10mm
+RD_I03,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,270,10,50,2,,,,,,regular_dipole,L-10% and gap+10mm joint change from RD_A01 -- compare against summed RD_P01+RD_P06 deltas,RD_A01,two_param_interaction,L_line_mm;coil_to_phantom_mm,L-10%;gap+10mm
+RD_I04,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,330,12,40,2,,,,,,regular_dipole,L+10% and W+20% joint change from RD_A01 -- compare against summed RD_P02+RD_P04 deltas,RD_A01,two_param_interaction,L_line_mm;strip_width_mm,L+10%;W+20%
+RD_I05,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,270,8,40,2,,,,,,regular_dipole,L-10% and W-20% joint change from RD_A01 -- compare against summed RD_P01+RD_P03 deltas,RD_A01,two_param_interaction,L_line_mm;strip_width_mm,L-10%;W-20%
+RD_I06,regular_dipole,interaction,template,direct_unmatched_performance,direct_port,300,12,30,2,,,,,,regular_dipole,W+20% and gap-10mm joint change from RD_A01 -- compare against summed RD_P04+RD_P05 deltas,RD_A01,two_param_interaction,strip_width_mm;coil_to_phantom_mm,W+20%;gap-10mm

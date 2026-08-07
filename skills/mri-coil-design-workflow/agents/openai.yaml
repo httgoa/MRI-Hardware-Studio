@@ -1,0 +1,3 @@
+display_name: MRI Coil Design Workflow
+short_description: Design, inspect and simulate MRI RF coils in CST via the CST MCP, then extract and validate B1+/SAR/S-parameter results.
+default_prompt: Use the MRI coil design workflow skill to plan or run an MRI RF coil CST simulation through the CST MCP. Classify the request, inspect unknown projects before changing them, work on a copied project, run the EM + circuit co-simulation + post-processing pipeline as needed, extract MRI metrics (B1+ field & homogeneity, SAR, S-parameters/resonance), validate against evidence, and save figures + report into an auto-named results subfolder.
