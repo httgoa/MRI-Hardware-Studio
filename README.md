@@ -132,7 +132,7 @@ Point the MCP server at your CST installation via environment variables in your 
 
 See `skills/mri-coil-design-workflow/driving/mcp-setup.md` for full setup and verification steps.
 
-### Step 3 — Register the skill in VS Code Copilot
+### Step 3 — Register the skill in agent
 
 Copy (or symlink) the skill into your agent skills directory:
 
