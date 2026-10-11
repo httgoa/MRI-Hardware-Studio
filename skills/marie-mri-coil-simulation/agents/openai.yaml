@@ -1,0 +1,4 @@
+interface:
+  display_name: "MARIE MRI Coil Simulation"
+  short_description: "Build, validate, and query MARIE MRI simulations."
+  default_prompt: "Use $marie-mri-coil-simulation to query the bundled MARIE guidance or build and validate a reproducible MARIE simulation."

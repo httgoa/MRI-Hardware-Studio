@@ -1,0 +1,22 @@
+{
+  "h5_file": "results/dipole_scratch/log/hfield_ac_box.h5",
+  "out_dir": "results\\dipole_scratch\\output",
+  "normalized_to_1W": true,
+  "p_accepted_W": 49.996,
+  "b0_plus_z": true,
+  "mu_r": 1.0,
+  "peak_uT": 1.484762435544406,
+  "peak_uT_whole_export": 64.96304947846586,
+  "roi_zmin_mm": null,
+  "roi_zmax_mm": -24.0,
+  "peak_xyz_mm": [
+    0.0,
+    0.0,
+    -24.0
+  ],
+  "central_slice_z_mm": -24.0,
+  "central_mean_uT": 0.33037145236438464,
+  "central_std_uT": 0.3035462784919829,
+  "central_cv": 0.9188029907535266,
+  "unit": "uT"
+}

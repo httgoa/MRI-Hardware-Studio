@@ -1,0 +1,590 @@
+{
+  "schema_version": 2,
+  "snapshot_date": "2026-10-11",
+  "source_workspace": "/path/to/marie-tools",
+  "documents": [
+    {
+      "kind": "document",
+      "name": "AGENTS.md",
+      "bundle_path": "references/workspace-docs/AGENTS.md",
+      "bytes": 5888,
+      "sha256": "48cdd1063d30943763f820fd6d1c5029c7f6dc1fdf1099454e3fe850687d3c63"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_16通道仿真数据清理模板.md",
+      "bundle_path": "references/workspace-docs/MARIE_16通道仿真数据清理模板.md",
+      "bytes": 6984,
+      "sha256": "64d67e6639a076ba2c447a600469def81fddab728872fb217212323b2ff0663f"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_5T_16通道Loop球形体模仿真操作指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_5T_16通道Loop球形体模仿真操作指南.md",
+      "bytes": 38354,
+      "sha256": "9590b9a4785011f8d1a2136a665b07721d56af22d314ff7fc587604045933810"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_5T_16通道Loop球形体模仿真日志.md",
+      "bundle_path": "references/workspace-docs/MARIE_5T_16通道Loop球形体模仿真日志.md",
+      "bytes": 10244,
+      "sha256": "516d116fbead1d40d7ca680fd36635456694798697ce0f6d1941fbda852ac22f"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_5T_16通道联合TMD解决方案.md",
+      "bundle_path": "references/workspace-docs/MARIE_5T_16通道联合TMD解决方案.md",
+      "bytes": 5275,
+      "sha256": "ebaeade6fff2cd0b3700ba64c1a3b8cfb6b4bc12dcff1b05ee80cf41dc1c551f"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_5T_32CH_STAGE_B分级网络门禁_v01.md",
+      "bundle_path": "references/workspace-docs/MARIE_5T_32CH_STAGE_B分级网络门禁_v01.md",
+      "bytes": 1115,
+      "sha256": "692fbf1c2a2d97c14e12af321be965bb325023e76a578dcadc783e8e01c21128"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_5T_8通道Loop球形体模仿真操作指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_5T_8通道Loop球形体模仿真操作指南.md",
+      "bytes": 55745,
+      "sha256": "3821ee7b169510553a3b9430efed3bd847518c63c4e98aae68ba7d06152b9bb6"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_Agent_Harness.md",
+      "bundle_path": "references/workspace-docs/MARIE_Agent_Harness.md",
+      "bytes": 29973,
+      "sha256": "1cdf30e39acb26a84a5df5524e91fc1f438786990727a13af47c27680f164faf"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_Agent训练闭环与并发资源治理.md",
+      "bundle_path": "references/workspace-docs/MARIE_Agent训练闭环与并发资源治理.md",
+      "bytes": 1413,
+      "sha256": "803ec06928b639115022d8cc9669cedcb68d11dbe3f0e974c436c9f8809e052c"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_Codex远程开发具体实施指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_Codex远程开发具体实施指南.md",
+      "bytes": 32232,
+      "sha256": "c18e1f16eb997eb45c787c2a3fe04db6edf3e7073a220f7f91f01f8bb3696fe6"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_data文件夹内容与仿真作用详解.md",
+      "bundle_path": "references/workspace-docs/MARIE_data文件夹内容与仿真作用详解.md",
+      "bytes": 35264,
+      "sha256": "792514c83ecbf1de1b96bc5381fa6e6d7db82a3e44ba0e9c22e86da8d4dc635f"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_JSON文件配置指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_JSON文件配置指南.md",
+      "bytes": 20951,
+      "sha256": "2334c163a53ea4b924ae60e6e618c9f12051634fa42aa1091fdfe16511ed3ce7"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_Phase2B_fake_selftest_20260811.md",
+      "bundle_path": "references/workspace-docs/MARIE_Phase2B_fake_selftest_20260811.md",
+      "bytes": 1630,
+      "sha256": "6ccb4903e35e270d62564368c8bf5c6cc5a73e69989982c95c6c98087801562d"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_Runner算法与使用指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_Runner算法与使用指南.md",
+      "bytes": 26706,
+      "sha256": "3b7e4930c970f411604bd826d63b8d4e768df9cfb268941e5eb93d7aff3ebe40"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_src源码模块与算法详解.md",
+      "bundle_path": "references/workspace-docs/MARIE_src源码模块与算法详解.md",
+      "bytes": 31651,
+      "sha256": "8fc1aa101393095d0968cdf9e2e486c268efd1a52efc8bd1f168f89e844a59b5"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_TMD模块使用教程.md",
+      "bundle_path": "references/workspace-docs/MARIE_TMD模块使用教程.md",
+      "bytes": 12977,
+      "sha256": "54b1abdbcd7205dda7ca24041cff72c6ed8340dc2fa4dab55d43dd7a48b162ea"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_tools_项目架构剖析报告.md",
+      "bundle_path": "references/workspace-docs/MARIE_tools_项目架构剖析报告.md",
+      "bytes": 23726,
+      "sha256": "7cd4bb52bcc693f4ba5ecc4c8284a84d9b177a4f7a3729f3f96c7c773b2d1946"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_UISNR实现与代码分析.md",
+      "bundle_path": "references/workspace-docs/MARIE_UISNR实现与代码分析.md",
+      "bytes": 18640,
+      "sha256": "611c3427120ec4b5a0aa0c79dd15b5ebecbdce8fcaa8fc98f1c267713f273d27"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_UISNR工程契约与回归测试_v01.md",
+      "bundle_path": "references/workspace-docs/MARIE_UISNR工程契约与回归测试_v01.md",
+      "bytes": 3532,
+      "sha256": "739d2d7c304269038621eeaa6e6979b638b91b0b4b3110c37663d7bd6cfe679d"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_UISNR独立复现方案与风险分析.md",
+      "bundle_path": "references/workspace-docs/MARIE_UISNR独立复现方案与风险分析.md",
+      "bytes": 17281,
+      "sha256": "59262277574c4b3b8b90919e1f1a155f149c027ed45145e837e1aebd170f6f2c"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_WP7优化框架架构与流程_v01.md",
+      "bundle_path": "references/workspace-docs/MARIE_WP7优化框架架构与流程_v01.md",
+      "bytes": 8202,
+      "sha256": "9872602e8ac1d31c8ffa0440231502c5e120aacba4aec481f1394a2ec870d941"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_使用指南_Codex经验.md",
+      "bundle_path": "references/workspace-docs/MARIE_使用指南_Codex经验.md",
+      "bytes": 49663,
+      "sha256": "6c4e73228c8074ec5d87368fcbb3cc7c6c26e16c30e00d56a2e8b6a1256caadd"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_可视化脚本使用指南.md",
+      "bundle_path": "references/workspace-docs/MARIE_可视化脚本使用指南.md",
+      "bytes": 24492,
+      "sha256": "91e6ae12e7204f9511c24a134eb2ed842fe1e5d636df1d7c6ec7980577399be9"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_帮助文档_中文.md",
+      "bundle_path": "references/workspace-docs/MARIE_帮助文档_中文.md",
+      "bytes": 8321,
+      "sha256": "baa6901a6288dbee4ece39250f81a6b6afc9dc26f21937ee3d7dcbf337ec3831"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_新会话初始化机制.md",
+      "bundle_path": "references/workspace-docs/MARIE_新会话初始化机制.md",
+      "bytes": 2024,
+      "sha256": "14054b751cd4c161e9602f562ede2f4d2c1a8f2a0ab535ee38365c58d7323a17"
+    },
+    {
+      "kind": "document",
+      "name": "MARIE_模型设计与组合教程.md",
+      "bundle_path": "references/workspace-docs/MARIE_模型设计与组合教程.md",
+      "bytes": 15737,
+      "sha256": "1f2e8f65351b7c371b24542f2e3bf76f2732c35772b1f393753926fe026c7d71"
+    },
+    {
+      "kind": "document",
+      "name": "PROJECT_3T_1H_Duke5mm_RFCoilOpt_Repro_v01_START_HERE.md",
+      "bundle_path": "references/workspace-docs/PROJECT_3T_1H_Duke5mm_RFCoilOpt_Repro_v01_START_HERE.md",
+      "bytes": 15337,
+      "sha256": "c3268f5a450e6de0056e7f741863abb54cfb67d7a003e3109d1c4e171075680b"
+    },
+    {
+      "kind": "document",
+      "name": "README.md",
+      "bundle_path": "references/workspace-docs/README.md",
+      "bytes": 4018,
+      "sha256": "d431b59fbe86810200964498e1174758f39fbef5961cfa1a22398aca6e2a5e2b"
+    },
+    {
+      "kind": "document",
+      "name": "START_HERE.md",
+      "bundle_path": "references/workspace-docs/START_HERE.md",
+      "bytes": 4846,
+      "sha256": "25b6a81475fb35da0902984a09ab39949c25a9a691586db365992124b85564ed"
+    }
+  ],
+  "matlab_scripts": [
+    {
+      "kind": "matlab-script",
+      "name": "CREATE_5T_16CH_DOUBLE_ROW_CASE.m",
+      "bundle_path": "assets/matlab-scripts/CREATE_5T_16CH_DOUBLE_ROW_CASE.m",
+      "bytes": 7264,
+      "sha256": "0aa126f546c349cd8b3706c9750a7ad985dec9c263a2a270a3aed8e6e3cd67a1"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "FINALIZE_5T_16CH_FROM_CHECKPOINT.m",
+      "bundle_path": "assets/matlab-scripts/FINALIZE_5T_16CH_FROM_CHECKPOINT.m",
+      "bytes": 3073,
+      "sha256": "c9029b05efce36085b724ab78f4630f06c7013cbd7ea009d6b880aea17a85739"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "installer.m",
+      "bundle_path": "assets/matlab-scripts/installer.m",
+      "bytes": 10258,
+      "sha256": "69c33644c7d9ca75d247c2862a9b44ec6309978396b0e40e4e8c72b41329fc5b"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "POST_5T_16CH_SPHERE.m",
+      "bundle_path": "assets/matlab-scripts/POST_5T_16CH_SPHERE.m",
+      "bytes": 19299,
+      "sha256": "5f866489950769acc658978e489a2fc904d4ba7392a1e57a5b65870ce290ddc4"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "POST_5T_8CH_SPHERE.m",
+      "bundle_path": "assets/matlab-scripts/POST_5T_8CH_SPHERE.m",
+      "bytes": 22846,
+      "sha256": "f7659e0b95b4ab56f6bac2e099819f1e9a9cf5553d633cb855b6a2aea6987f7e"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "PRECOMPUTE_5T_16CH_EM_NETWORK.m",
+      "bundle_path": "assets/matlab-scripts/PRECOMPUTE_5T_16CH_EM_NETWORK.m",
+      "bytes": 2150,
+      "sha256": "e70ed2638103da545241181dd76273bcd12cd400ce079afbfc0e4e9db57268ae"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "RUN_5T_16CH_SPHERE.m",
+      "bundle_path": "assets/matlab-scripts/RUN_5T_16CH_SPHERE.m",
+      "bytes": 1000,
+      "sha256": "087a52f0a5d0e7da41240e70fb35ac7a8e084baa04f98712ccebf019e8f79f4b"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "RUN_5T_16CH_TMD_ONLY.m",
+      "bundle_path": "assets/matlab-scripts/RUN_5T_16CH_TMD_ONLY.m",
+      "bytes": 16841,
+      "sha256": "1b86532b2612258ee2a6abdecf044c82534cceb2254059fd95e0cd5ef593ed04"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "startup.m",
+      "bundle_path": "assets/matlab-scripts/startup.m",
+      "bytes": 23,
+      "sha256": "a23e478cfe76b4726ca33dffe6e90fffdb405288dbfe7c397f1d397ada028315"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "COMPARE_ARRAY_TO_UISNR_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/COMPARE_ARRAY_TO_UISNR_TEMPLATE.m",
+      "bytes": 1273,
+      "sha256": "cfce7b042d0e6f3c7f2cc8cd00b54ea10936d3fada73c2e748ffe9b1b41d5216"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "EXTRACT_ICP_TARGET_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/EXTRACT_ICP_TARGET_TEMPLATE.m",
+      "bytes": 1459,
+      "sha256": "b25cada79469dc3d5cb7fe1d34be425fefd7cd720c14dbcecf9f1e6f2804b29b"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "PLOT_COMPLEX_CURRENT_DIAGNOSTICS_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/PLOT_COMPLEX_CURRENT_DIAGNOSTICS_TEMPLATE.m",
+      "bytes": 4108,
+      "sha256": "1dde02ca3bcd0bdb5c59d1219b6f2617b916402ed5043d43cff2b68afc93db13"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "POST_UISNR_CONVERGENCE_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/POST_UISNR_CONVERGENCE_TEMPLATE.m",
+      "bytes": 1106,
+      "sha256": "5a7681ecc2c05d6a05d040edb2ddc877bec35527e543f9dcb5bab4c4024ae8d3"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "POST_UISNR_FINAL_MAP_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/POST_UISNR_FINAL_MAP_TEMPLATE.m",
+      "bytes": 2047,
+      "sha256": "c9539f7edb88a14d7bb9e0716086282e4599fe24d4d8f8c5be1e2766af8bd724"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "PROBE_UISNR_RESOURCES_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/PROBE_UISNR_RESOURCES_TEMPLATE.m",
+      "bytes": 1382,
+      "sha256": "a8ecb78f6e3205d7fa266bb19546a914e8e9b99e9cfc28823c929488180153b9"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "RUN_UISNR_BASIS_STREAMING_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/RUN_UISNR_BASIS_STREAMING_TEMPLATE.m",
+      "bytes": 2280,
+      "sha256": "3bdbdb1dcaaa963ab739ff06fc87ac71f64edbffe72a99d8cd980d24c1693937"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "RUN_UISNR_GEOMETRY_GATE_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/RUN_UISNR_GEOMETRY_GATE_TEMPLATE.m",
+      "bytes": 1405,
+      "sha256": "90e5fdc637629279202d50c0a6542ee78d5745c180add51bd18fbb896c673043"
+    },
+    {
+      "kind": "matlab-script",
+      "name": "VALIDATE_UISNR_CONTRACT_TEMPLATE.m",
+      "bundle_path": "assets/matlab-scripts/uisnr/VALIDATE_UISNR_CONTRACT_TEMPLATE.m",
+      "bytes": 1060,
+      "sha256": "bd4c8f99f9637871cb87965b363f0913e6b978d515bac0e02e0f1d7807f8ae0e"
+    }
+  ],
+  "agent_tools": [
+    {
+      "kind": "agent-tool",
+      "name": "approve.py",
+      "bundle_path": "assets/marie-agent-phase1/approve.py",
+      "bytes": 1772,
+      "sha256": "178d00106653c1c45b1bfb6b6b7f8536f93ed9ea1596911aa6a5ec4078831c0f"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "approve.sh",
+      "bundle_path": "assets/marie-agent-phase1/approve.sh",
+      "bytes": 108,
+      "sha256": "dfbdc5e21a19ee5fedec3f3e6fea1ece815cbe6e3461f8382d57bb544b1c0ca1"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "common.sh",
+      "bundle_path": "assets/marie-agent-phase1/common.sh",
+      "bytes": 340,
+      "sha256": "ae827e338873740938d021b889ee2d8bb5769cf0707b7d5c8da07aefaa276c11"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "inspect.sh",
+      "bundle_path": "assets/marie-agent-phase1/inspect.sh",
+      "bytes": 313,
+      "sha256": "de36ca754b6fab65e0d3daed678874a43fbe2aa6e2bc71127419fe90f8e1126b"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "launch.py",
+      "bundle_path": "assets/marie-agent-phase1/launch.py",
+      "bytes": 5513,
+      "sha256": "649e3ebc2f65436f7429e732c461c653c06f586bb07c8caeea6982e96252d8ae"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "launch.sh",
+      "bundle_path": "assets/marie-agent-phase1/launch.sh",
+      "bytes": 107,
+      "sha256": "ea25f6d49668b9c67fc869aa9bd9408c9c75468d9e7cab5b2086f82405d21e19"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "marie_agent_configure_pool.m",
+      "bundle_path": "assets/marie-agent-phase1/matlab/marie_agent_configure_pool.m",
+      "bytes": 782,
+      "sha256": "afa332e979e17c91e35ff2e6eb4701def585e95e4e656a95d9f75ad28d65ed0d"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "prepare.py",
+      "bundle_path": "assets/marie-agent-phase1/prepare.py",
+      "bytes": 11043,
+      "sha256": "2e19c37d7f8595403931b8034daf8b1990c9c1847cf1c0d87f32be9b34662382"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "prepare.sh",
+      "bundle_path": "assets/marie-agent-phase1/prepare.sh",
+      "bytes": 260,
+      "sha256": "bf31854258e10239471d91a74f46c9198f6edf3e3e0e032f89a552488f8ade27"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "production_worker.py",
+      "bundle_path": "assets/marie-agent-phase1/production_worker.py",
+      "bytes": 5497,
+      "sha256": "e9649b2bef0daaef75822e66e0adefd6949b8850044dac0594293b800993993e"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "runtime.py",
+      "bundle_path": "assets/marie-agent-phase1/runtime.py",
+      "bytes": 7419,
+      "sha256": "c6d95e8f454cb6c7659f2276bff8fbae14d90a4305c15f2695c67c266ef40c1e"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "status.sh",
+      "bundle_path": "assets/marie-agent-phase1/status.sh",
+      "bytes": 918,
+      "sha256": "f41dce7f7d6e49b7c04720355edbe688d9cd9e7ca0c9810ef26efc016e9254fc"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "tail.sh",
+      "bundle_path": "assets/marie-agent-phase1/tail.sh",
+      "bytes": 1037,
+      "sha256": "637d03562d2a0732ee07404b0112f11936287fa70c20ca9e788709de8a3de225"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "fake_worker.py",
+      "bundle_path": "assets/marie-agent-phase1/tests/fake_worker.py",
+      "bytes": 424,
+      "sha256": "8e1af31b6fd5d7b0bbebfec0f4373cb2c9106addb93827764bce57926209836a"
+    },
+    {
+      "kind": "agent-tool",
+      "name": "selftest.py",
+      "bundle_path": "assets/marie-agent-phase1/tests/selftest.py",
+      "bytes": 4927,
+      "sha256": "7afb9f45bcc26e4c9cf7f01ef760052e3424aa66de8c22b95dfdf2a6344be015"
+    }
+  ],
+  "tests": [
+    {
+      "kind": "test",
+      "name": "RUN_ALL_UISNR_SKILL_TESTS.m",
+      "bundle_path": "tests/uisnr/RUN_ALL_UISNR_SKILL_TESTS.m",
+      "bytes": 546,
+      "sha256": "ea3e120d05fdb3142e10619112ed3c30d82db4ad1d26896c9b99b426ccdec7c6"
+    },
+    {
+      "kind": "test",
+      "name": "TEST_COMPLEX_CURRENT_DIAGNOSTICS.m",
+      "bundle_path": "tests/uisnr/TEST_COMPLEX_CURRENT_DIAGNOSTICS.m",
+      "bytes": 729,
+      "sha256": "0640db50f98c20e9edbf166d985cbf40aa2997d2ba8747841c55329bcd8f24ca"
+    },
+    {
+      "kind": "test",
+      "name": "TEST_ICP_PHASE_AND_BASIS_INVARIANCE.m",
+      "bundle_path": "tests/uisnr/TEST_ICP_PHASE_AND_BASIS_INVARIANCE.m",
+      "bytes": 584,
+      "sha256": "65ebd7364873009ea5a5a5b81acb2d6dc14173d64532dc93a24b7ec02f422660"
+    },
+    {
+      "kind": "test",
+      "name": "TEST_UISNR_QUADRATIC_FORM.m",
+      "bundle_path": "tests/uisnr/TEST_UISNR_QUADRATIC_FORM.m",
+      "bytes": 758,
+      "sha256": "205b8e12f1fee2b0870fe5f982480ef4faa609d7fc860d76ef49c4a8212bec93"
+    },
+    {
+      "kind": "test",
+      "name": "TEST_UISNR_ROI_ORDERING.m",
+      "bundle_path": "tests/uisnr/TEST_UISNR_ROI_ORDERING.m",
+      "bytes": 773,
+      "sha256": "4afe06ba0203572f251ffae4cbb6e4244f4d862fac2290a83c247229aefed282"
+    },
+    {
+      "kind": "test",
+      "name": "TEST_UISNR_STREAMING_PARITY.m",
+      "bundle_path": "tests/uisnr/TEST_UISNR_STREAMING_PARITY.m",
+      "bytes": 1178,
+      "sha256": "4382d6c3be573a50c407bbf884b167f80493d0da10c30a7b823ccd87aa8dca0c"
+    }
+  ],
+  "support_files": [
+    {
+      "kind": "skill-support",
+      "name": "SKILL.md",
+      "bundle_path": "SKILL.md",
+      "bytes": 18857,
+      "sha256": "6baf1309831dc03b287626df520d71e8ec40f91646efdd22a3aa75f0e456c980"
+    },
+    {
+      "kind": "skill-support",
+      "name": "openai.yaml",
+      "bundle_path": "agents/openai.yaml",
+      "bytes": 270,
+      "sha256": "bf2593c07940b357a01a6fbc99f81bc83d13aa341d0e0f65446b72e84a31d042"
+    },
+    {
+      "kind": "skill-support",
+      "name": "architecture-interfaces.md",
+      "bundle_path": "references/architecture-interfaces.md",
+      "bytes": 77834,
+      "sha256": "5052fb349f4e8de70f887e072a3c015636ab9e04fe5f418d09a5123bab7ccf09"
+    },
+    {
+      "kind": "skill-support",
+      "name": "document-index.md",
+      "bundle_path": "references/document-index.md",
+      "bytes": 4582,
+      "sha256": "e55f90e124f5b5224e4cc699751eca1b917a5f27e7d0ba7ce6a61a40c3d1e9c6"
+    },
+    {
+      "kind": "skill-support",
+      "name": "rx-array-validation.md",
+      "bundle_path": "references/rx-array-validation.md",
+      "bytes": 2411,
+      "sha256": "098c05fddc1591106a7f64e7d60c77e8c95757f8265c36835d5e2d78a53ab339"
+    },
+    {
+      "kind": "skill-support",
+      "name": "snr-measurement-normalization.md",
+      "bundle_path": "references/snr-measurement-normalization.md",
+      "bytes": 8654,
+      "sha256": "213446f231aac7776250892ff2378c1df89c4b5d77191bf5cc2f0e5736b88a5e"
+    },
+    {
+      "kind": "skill-support",
+      "name": "storage-layout.md",
+      "bundle_path": "references/storage-layout.md",
+      "bytes": 3968,
+      "sha256": "1d83bbee0701da30c9f203d0f2c9b6658f40bb93ed1e1245d206b3eb9088b77b"
+    },
+    {
+      "kind": "skill-support",
+      "name": "upstream-and-license.md",
+      "bundle_path": "references/upstream-and-license.md",
+      "bytes": 1337,
+      "sha256": "c94aa1032f387ed47d9a100fc9b9489a8c36803573084c09b062ce0883c55ce0"
+    },
+    {
+      "kind": "skill-support",
+      "name": "uisnr-workflow-and-contracts.md",
+      "bundle_path": "references/uisnr-workflow-and-contracts.md",
+      "bytes": 3574,
+      "sha256": "d7326ec261b44e4f987484fa4ec09f9a4b3c29535b3b315c3cfb8f7c9671b51f"
+    },
+    {
+      "kind": "skill-support",
+      "name": "uisnr-icp-complex-conventions.md",
+      "bundle_path": "references/uisnr-icp-complex-conventions.md",
+      "bytes": 2333,
+      "sha256": "d313531210d3c68110a6b96a0ad35ea980ee4653979f288e7367a75bd17b9283"
+    },
+    {
+      "kind": "skill-support",
+      "name": "uisnr-convergence-validation.md",
+      "bundle_path": "references/uisnr-convergence-validation.md",
+      "bytes": 2528,
+      "sha256": "c6b74a22bcc343babf2e14e247a858cb1266e75cbb8096fac24bb71ae2939aa5"
+    },
+    {
+      "kind": "skill-support",
+      "name": "query_marie_docs.py",
+      "bundle_path": "scripts/query_marie_docs.py",
+      "bytes": 3244,
+      "sha256": "7b8d29d17fa207138c2cb1cee2f40b6713b3d6f018f045905134d1952cccb6d2"
+    },
+    {
+      "kind": "skill-support",
+      "name": "record_architecture_update.py",
+      "bundle_path": "scripts/record_architecture_update.py",
+      "bytes": 1457,
+      "sha256": "0f7ed7e34a347d252a62d7fdd690b609d27e8fd7d335096047b76f63c807b1e0"
+    },
+    {
+      "kind": "skill-support",
+      "name": "session_init.sh",
+      "bundle_path": "scripts/session_init.sh",
+      "bytes": 652,
+      "sha256": "ff56d844ab4f9ad578d4ff646f7db1457086836dfba4f4d600bc429427bef2d4"
+    }
+  ],
+  "self_hash_exclusion": "references/bundle-manifest.json and scripts/refresh_bundle_manifest.py are excluded to avoid self-referential hashes."
+}

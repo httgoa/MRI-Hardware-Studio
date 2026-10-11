@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>MRI Hardware Studio · MRI RF Hardware Paper Reproduction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="hero" id="top">
+    <nav class="masthead">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">M<span>·</span></span>
+        <span><b>MRI Hardware</b> Studio <em>VALIDATION WORKFLOW</em></span>
+      </a>
+      <div class="mast-actions">
+        <button class="quiet-button" id="resetBtn" type="button">Reset</button>
+        <button class="quiet-button" id="fullscreenBtn" type="button">Fullscreen</button>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">LITERATURE → EM MODEL → MRI METRICS → VALIDATION</p>
+        <h1>From published evidence to an <span>auditable MRI RF hardware model</span></h1>
+        <p class="lede">An auditable workflow for translating a published MRI RF design into a CST model, qualifying the reference configuration, evaluating the prescribed design space, deriving B1<sup>+</sup>/SAR performance metrics, and issuing an evidence-bounded scientific conclusion.</p>
+        <a class="primary-button" href="#stage-01">Begin walkthrough <span>↓</span></a>
+      </div>
+      <div class="hero-dashboard" aria-label="Reproduction overview">
+        <div class="signal-orbit">
+          <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+          <div class="dipole-graphic"><i></i><i></i><b></b></div>
+          <div class="frequency"><strong>298</strong><span>MHz · 7 T</span></div>
+        </div>
+        <div class="hero-stats">
+          <div><strong>24</strong><span>independent 3D solves</span></div>
+          <div><strong>0</strong><span>solver retries</span></div>
+          <div><strong>12</strong><span>reproduced panels</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="progress-shell" id="progressShell">
+      <div class="progress-head">
+        <div class="progress-brand"><span class="live-dot"></span> MRI Hardware Studio · Paper-to-CST Validation</div>
+        <div class="progress-context">Current stage · <strong id="currentStageLabel">Define the study</strong></div>
+      </div>
+      <div class="progress-track" role="navigation" aria-label="Reproduction stages">
+        <div class="track-line"><div class="track-fill" id="trackFill"></div></div>
+        <button class="step active" data-target="stage-01" type="button"><b>01</b><span>Study definition</span></button>
+        <button class="step" data-target="stage-02" type="button"><b>02</b><span>Reference model</span></button>
+        <button class="step" data-target="stage-03" type="button"><b>03</b><span>Design evaluation</span></button>
+        <button class="step" data-target="stage-04" type="button"><b>04</b><span>Field analysis</span></button>
+        <button class="step" data-target="stage-99" type="button"><b>99</b><span>Validation</span></button>
+      </div>
+    </div>
+
+    <section class="story-stage" id="stage-01" data-stage="0" data-label="Define the reproduction study">
+      <div class="stage-frame">
+        <div class="stage-intro">
+          <span class="stage-number">STAGE 01 · STUDY DEFINITION</span>
+          <p class="stage-kicker">Establish the scientific and numerical contract</p>
+          <h2>Define the reproduction scope and acceptance criteria</h2>
+          <p>Translate the publication into testable claims, a traceable EM model specification, declared observables, normalization conventions, uncertainty sources, and decision thresholds before numerical execution.</p>
+          <button class="reveal-button" type="button" aria-expanded="false">Review study definition <span>→</span></button>
+        </div>
+
+        <div class="stage-detail">
+          <article class="card hook-card wide">
+            <p class="card-label">RESEARCH QUESTION</p>
+            <h3>Can a shortened, reactively fractionated dipole preserve deep B1<sup>+</sup> while improving the local-SAR trade-off at 7 T?</h3>
+            <div class="source-line"><span>Raaijmakers et al. · MRM 75:1366–1374 (2016)</span><span>Source PDF SHA-256 frozen</span></div>
+          </article>
+
+          <div class="node-ribbon" aria-label="Stage 01 key nodes">
+            <div><b>01.1</b><span>Read claims</span></div><i></i><div><b>01.2</b><span>Map targets</span></div><i></i><div><b>01.3</b><span>Freeze CST translation</span></div><i></i><div><b>01.4</b><span>Declare gates</span></div>
+          </div>
+
+          <div class="card-grid two">
+            <article class="card">
+              <p class="card-label">CLAIM → TARGET MAP</p>
+              <ul class="target-list">
+                <li><b>T1</b><span><strong>Geometry dependence.</strong> The B1<sup>+</sup>/√SAR<sub>10g,max</sub> efficiency metric reaches a plateau near 300 mm total conductor length.</span></li>
+                <li><b>T2</b><span><strong>Distributed loading.</strong> The favorable series-inductance region lies near 75–100 nH; excessive inductive loading degrades deep transmit efficiency.</span></li>
+                <li><b>T3</b><span><strong>Power normalization.</strong> B1<sup>+</sup> and SAR must be normalized using the accepted power extracted for each driven simulation.</span></li>
+              </ul>
+            </article>
+            <article class="card decision-card">
+              <p class="card-label">PREDECLARED ACCEPTANCE GATES</p>
+              <div class="decision-row"><span>300 mm B1<sup>+</sup>/√SAR metric</span><b>within 20% of sweep maximum</b></div>
+              <div class="decision-row"><span>Loading optimum</span><b>must include 75 or 100 nH</b></div>
+              <div class="decision-row"><span>150 nH B1<sup>+</sup>/√SAR metric</span><b>at least 30% below optimum</b></div>
+              <div class="decision-row"><span>Curve-level agreement</span><b>ρ ≥ 0.8 · nRMSE ≤ 20%</b></div>
+            </article>
+          </div>
+
+          <article class="card setup-card">
+            <div class="setup-copy">
+              <p class="card-label">PAPER → CST TRANSLATION</p>
+              <h3>One tissue phantom, two isolated antenna topologies</h3>
+              <p>298 MHz · PEC strip 10 × 0.5 mm · 2 mm center gap · 20 mm above a 500 mm homogeneous phantom · ε<sub>r</sub>=34 · σ=0.4 S/m · ρ=1000 kg/m³.</p>
+            </div>
+            <div class="topology-pair">
+              <div><span>FIG. 3 · CONTINUOUS</span><div class="mini-dipole continuous"><i></i><i></i></div><small>9 lengths · 50–450 mm</small></div>
+              <div><span>FIG. 4 · FRACTIONATED</span><div class="mini-dipole segmented"><i></i><i></i><i></i><i></i><i></i><i></i></div><small>4 series bridges · 15 loads</small></div>
+            </div>
+          </article>
+
+          <div class="card-grid two">
+            <article class="card matrix-card">
+              <p class="card-label">PARAMETER MATRIX · 24 SOLVES</p>
+              <div class="matrix-row"><span>Fig. 3 · L<sub>total</sub></span><b>50 · 100 · 150 · 200 · 250 · 300 · 350 · 400 · 450 mm</b></div>
+              <div class="matrix-row"><span>Fig. 4 · C<sub>seg</sub></span><b>1 · 2 · 5 · 10 · 20 · 50 · 100 · 500 · 1000 pF</b></div>
+              <div class="matrix-row"><span>Fig. 4 · L<sub>seg</sub></span><b>10 · 20 · 50 · 75 · 100 · 150 nH</b></div>
+            </article>
+            <article class="card thought-card">
+              <p class="card-label">WHY THESE RULES?</p>
+              <blockquote>“A solver completion is not evidence by itself.”</blockquote>
+              <p>Every case also requires traceable result-tree sources, finite positive accepted power, finite normalized B1<sup>+</sup>/SAR quantities, complete longitudinal ROI coverage, and an export audit. A completed solver run without retrievable field evidence is not treated as validated.</p>
+            </article>
+          </div>
+
+          <article class="card risk-card wide">
+            <p class="card-label">KNOWN MODEL-FORM RISKS DECLARED UP FRONT</p>
+            <div class="risk-grid">
+              <div><b>A1</b><span>0.5 mm conductor thickness</span><small>local E-field and mesh sensitivity</small></div>
+              <div><b>A2</b><span>finite 500 mm phantom</span><small>boundary and deep-field sensitivity</small></div>
+              <div><b>A3</b><span>deterministic mesh policy</span><small>SAR peak convergence risk</small></div>
+              <div><b>A4</b><span>visual digitization</span><small>±5% plotted-axis uncertainty</small></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage" id="stage-02" data-stage="1" data-label="Qualify the reference EM model">
+      <div class="stage-frame">
+        <div class="stage-intro">
+          <span class="stage-number">STAGE 02 · REFERENCE MODEL QUALIFICATION</span>
+          <p class="stage-kicker">A blocking physics gate before design-space evaluation</p>
+          <h2>Construct and qualify the reference EM model</h2>
+          <p>Build the reference configuration in a fresh CST project, verify geometry and excitation semantics, solve the driven 3D problem, and confirm that the required field, power, SAR, and spatial-coverage evidence is physically plausible and retrievable.</p>
+          <button class="reveal-button" type="button" aria-expanded="false">Inspect model construction and qualification <span>→</span></button>
+        </div>
+
+        <div class="stage-detail">
+          <article class="card wide build-card">
+            <div class="build-header"><div><p class="card-label">DETERMINISTIC BUILD MANIFEST</p><h3>9 visible construction blocks</h3></div><span class="status-pill">FRESH PROJECT</span></div>
+            <div class="build-timeline">
+              <div><b>01</b><span>Define paper parameters</span></div><div><b>02</b><span>Units, background & boundary</span></div><div><b>03</b><span>Phantom material</span></div>
+              <div><b>04</b><span>Dipole component</span></div><div><b>05</b><span>Continuous PEC arms</span></div><div><b>06</b><span>50 Ω discrete port</span></div>
+              <div><b>07</b><span>500 mm phantom</span></div><div><b>08</b><span>H & loss monitors</span></div><div><b>09</b><span>HF time-domain solver</span></div>
+            </div>
+          </article>
+
+          <div class="media-grid">
+            <article class="media-card card">
+              <button class="media-image zoomable" type="button"><img src="assets/fig3_modeling_after_sweep_parameter.png" alt="Continuous dipole CST model after the Fig. 3 sweep"></button>
+              <div class="media-caption"><p class="card-label">REFERENCE GEOMETRY · POST-SWEEP SNAPSHOT</p><h3>Center-fed strip dipole above the homogeneous load</h3><p>The saved CST project shows the final stored sweep state, <b>L<sub>total</sub>=450 mm</b>. The qualified 300 mm reference case is represented by its case-specific HDF5 field exports and export-audit record rather than this screenshot.</p></div>
+            </article>
+            <article class="media-card card">
+              <button class="media-image zoomable" type="button"><img src="assets/fig3_SAR_after_sweep_parameter.png" alt="Continuous dipole SAR field after the Fig. 3 sweep"></button>
+              <div class="media-caption"><p class="card-label">REFERENCE SAR FIELD · RAW CST DISPLAY</p><h3>Spatial distribution of native 10 g averaged SAR</h3><p>This screenshot shows the raw SAR result retained in the final stored sweep state and is not an inter-case comparison. Reported quantities use IEEE C95.3 10 g averaged SAR normalized by the accepted power of the corresponding simulation.</p></div>
+            </article>
+          </div>
+
+          <article class="card formula-card wide">
+            <p class="card-label">CRITICAL NORMALIZATION DECISION</p>
+            <div class="formula-row"><span>B1<sup>+</sup><sub>norm</sub> =</span><strong>B1<sup>+</sup> / √P<sub>accepted</sub></strong><i></i><span>SAR<sub>norm</sub> =</span><strong>SAR / P<sub>accepted</sub></strong></div>
+            <p>At 298 MHz, S11 was −0.856 dB for the reference case. Because delivered power varies strongly with mismatch, B1<sup>+</sup> and SAR were normalized using the accepted power extracted from the corresponding solver run rather than nominal incident power.</p>
+          </article>
+
+          <div class="metric-grid">
+            <article class="metric card"><span>Accepted power</span><strong>0.08947</strong><small>W</small><em>PASS</em></article>
+            <article class="metric card"><span>Peak B1<sup>+</sup></span><strong>1.447</strong><small>µT / √W</small><em>PASS</em></article>
+            <article class="metric card"><span>B1<sup>+</sup> @ 10 cm</span><strong>0.1858</strong><small>µT / √W</small><em>PASS</em></article>
+            <article class="metric card"><span>SAR<sub>10g,max</sub></span><strong>1.315</strong><small>W/kg/W</small><em>PASS</em></article>
+          </div>
+
+          <article class="card gate-card wide">
+            <div class="build-header"><div><p class="card-label">BLOCKING BASELINE GATE</p><h3>All evidence conditions passed—sweeps may proceed</h3></div><span class="status-pill">6 / 6 PASS</span></div>
+            <div class="gate-list">
+              <span><i>✓</i> complex H-field result available</span><span><i>✓</i> power-loss density available</span><span><i>✓</i> finite positive accepted power</span>
+              <span><i>✓</i> native IEEE C95.3 10 g SAR</span><span><i>✓</i> physically localized SAR maximum</span><span><i>✓</i> required ±160 mm longitudinal ROI</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage long-stage" id="stage-03" data-stage="2" data-label="Evaluate the prescribed design space">
+      <div class="stage-frame">
+        <div class="stage-intro">
+          <span class="stage-number">STAGE 03 · DESIGN-SPACE EVALUATION</span>
+          <p class="stage-kicker">Controlled comparison across geometry and loading variables</p>
+          <h2>Execute the prescribed design-space study</h2>
+          <p>Evaluate every declared configuration under a common solver, monitor, export, normalization, and ROI contract. Preserve result provenance and case-level validation so that trends are attributable to the intended design variable.</p>
+          <div class="sweep-legend" aria-label="Design-study color legend"><span class="fig3-key"><i></i><b>GEOMETRY STUDY</b> Source target: Fig. 3</span><span class="fig4-key"><i></i><b>LOADING STUDY</b> Source target: Fig. 4</span></div>
+          <button class="reveal-button" type="button" aria-expanded="false">Explore design-space evidence <span>→</span></button>
+        </div>
+
+        <div class="stage-detail">
+          <article class="card process-card wide">
+            <p class="card-label">PER-CONFIGURATION EM EVALUATION LOOP</p>
+            <div class="process-flow"><span>Apply design variable</span><i>→</i><span>Rebuild parameterized geometry</span><i>→</i><span>Run driven HF solve</span><i>→</i><span>Verify & export complex H</span><i>→</i><span>Evaluate native 10 g SAR</span><i>→</i><span>Normalize, validate & checkpoint</span></div>
+            <p class="process-note">The complex H-field was exported before <code>SAR.Create</code> to preserve unambiguous source-result provenance. Each checkpoint records the result-tree source, accepted power, finite derived quantities, coordinate convention, and achieved ROI.</p>
+          </article>
+
+          <div class="figure-band fig3-band"><div class="figure-band-id"><b>GEOMETRY</b><span>PARAMETER STUDY</span></div><div><h3>Continuous-conductor length evaluation</h3><p>Case-specific target: reproduce the trends reported in Paper Fig. 3.</p></div><small>9 LENGTHS · 50–450 mm</small></div>
+          <div class="substage-heading fig3-heading"><span>03.A</span><div><p>GEOMETRY STUDY · QUANTITATIVE RESULTS</p><h3>Length dependence of transmit and SAR efficiency</h3></div><b>9 solves · 0 retries</b></div>
+          <div class="card-grid two chart-grid figure-content fig3-content">
+            <article class="card chart-card">
+              <div class="chart-head"><div><p class="card-label">B1<sup>+</sup>/√SAR<sub>10g,max</sub> AT 100 mm DEPTH</p><h3>A broad SAR-efficiency plateau emerges beyond 300 mm</h3></div><span class="status-pill">9 / 9</span></div>
+              <div class="chart" id="lengthChart" aria-label="Total conductor length versus B1 plus over square root maximum 10 gram SAR at 100 millimeters depth"></div>
+              <div class="insight"><b>Decision</b><span>300 mm is only <strong>0.668%</strong> below the 350 mm maximum</span></div>
+            </article>
+            <article class="card sweep-summary-card">
+              <p class="card-label">WHAT CHANGED ACROSS THE SWEEP?</p>
+              <div class="trend-row"><b>50 → 150 mm</b><span>deep B1<sup>+</sup> rises while SAR topology changes from double off-center to a central peak</span></div>
+              <div class="trend-row"><b>150 → 300 mm</b><span>accepted-power-normalized SAR<sub>10g,max</sub> decreases while the 100 mm B1<sup>+</sup>/√SAR metric approaches saturation</span></div>
+              <div class="trend-row"><b>300 → 450 mm</b><span>the efficiency metric changes by less than 1%; further conductor extension yields negligible benefit at the specified depth</span></div>
+              <div class="thought-callout"><b>Interpretation</b><p>The paper’s “approximately 300 mm” claim is a plateau claim—not a demand that 300 mm be the single numerical maximum.</p></div>
+            </article>
+          </div>
+
+          <article class="card data-table-card wide figure-content fig3-content fig3-table">
+            <div class="build-header"><div><p class="card-label">FIG. 3 · COMPLETE SCALAR SUMMARY</p><h3>All normalized length-sweep results</h3></div><span class="status-pill">FINITE · ROI PASS</span></div>
+            <div class="table-scroll"><table><thead><tr><th>Total length</th><th>P<sub>accepted</sub></th><th>B1<sup>+</sup> @ 100 mm</th><th>SAR<sub>10g,max</sub></th><th>B1<sup>+</sup>/√SAR @ 100 mm</th><th>SAR distribution</th></tr></thead><tbody>
+              <tr><td>50 mm</td><td>0.000250 W</td><td>0.177438</td><td>5.107887</td><td>0.078510</td><td><span class="table-tag partial">double off-center</span></td></tr>
+              <tr><td>100 mm</td><td>0.001545 W</td><td>0.196703</td><td>2.804348</td><td>0.117461</td><td><span class="table-tag partial">double off-center</span></td></tr>
+              <tr><td>150 mm</td><td>0.005382 W</td><td>0.204015</td><td>2.091506</td><td>0.141069</td><td><span class="table-tag pass">central</span></td></tr>
+              <tr><td>200 mm</td><td>0.014862 W</td><td>0.202758</td><td>1.758785</td><td>0.152887</td><td><span class="table-tag pass">central</span></td></tr>
+              <tr><td>250 mm</td><td>0.037093 W</td><td>0.195898</td><td>1.516070</td><td>0.159100</td><td><span class="table-tag pass">central</span></td></tr>
+              <tr class="highlight-row"><td>300 mm</td><td>0.089467 W</td><td>0.185800</td><td>1.315104</td><td>0.162019</td><td><span class="table-tag pass">plateau anchor</span></td></tr>
+              <tr class="best-row"><td>350 mm</td><td>0.209565 W</td><td>0.174364</td><td>1.142783</td><td>0.163108</td><td><span class="table-tag best">sweep maximum</span></td></tr>
+              <tr><td>400 mm</td><td>0.410416 W</td><td>0.162086</td><td>0.989686</td><td>0.162928</td><td><span class="table-tag pass">central</span></td></tr>
+              <tr><td>450 mm</td><td>0.488647 W</td><td>0.150672</td><td>0.857738</td><td>0.162688</td><td><span class="table-tag pass">central</span></td></tr>
+            </tbody></table></div>
+          </article>
+
+          <div class="figure-band fig4-band"><div class="figure-band-id"><b>REACTIVE</b><span>LOADING STUDY</span></div><div><h3>Distributed series-reactance evaluation</h3><p>Case-specific target: reproduce the loading trends reported in Paper Fig. 4.</p></div><small>15 LOADS · C + L</small></div>
+          <div class="substage-heading fig4-heading"><span>03.B</span><div><p>LOADING STUDY · EM MODEL</p><h3>Construct the fractionated conductor topology</h3></div><b>15 deterministic blocks</b></div>
+          <article class="card wide build-card compact-build figure-content fig4-content">
+            <p class="card-label">SEGMENTED BUILD SEQUENCE</p>
+            <div class="build-timeline segmented-build">
+              <div><b>01–04</b><span>Parameters, boundary, material, component</span></div><div><b>05</b><span>Inner segment pair</span></div><div><b>06</b><span>Middle segment pair</span></div>
+              <div><b>07</b><span>Outer segment pair</span></div><div><b>08</b><span>50 Ω feed port</span></div><div><b>09–12</b><span>Four RLCSerial bridges</span></div>
+              <div><b>13</b><span>Phantom</span></div><div><b>14</b><span>Field monitors</span></div><div><b>15</b><span>HF time-domain solver</span></div>
+            </div>
+          </article>
+
+          <div class="media-grid figure-content fig4-content">
+            <article class="media-card card">
+              <button class="media-image zoomable" type="button"><img src="assets/fig4_modeling_after_sweep_parameter.png" alt="Segmented fractionated dipole CST model after the Fig. 4 sweep"></button>
+              <div class="media-caption"><p class="card-label">LOADED MODEL · POST-SWEEP SNAPSHOT</p><h3>Three PEC sections per arm with four series lumped-element bridges</h3><p>The saved project shows the final stored loading state, corresponding to the <b>150 nH high-inductance endpoint</b>, rather than the 75 nH maximum-efficiency case.</p></div>
+            </article>
+            <article class="media-card card">
+              <button class="media-image zoomable" type="button"><img src="assets/fig4_SAR_after_sweep_parameter.png" alt="Segmented fractionated dipole SAR field after the Fig. 4 sweep"></button>
+              <div class="media-caption"><p class="card-label">LOADED SAR FIELD · RAW CST DISPLAY</p><h3>High series inductance redistributes local RF power deposition</h3><p>The final stored 150 nH case exhibits split, off-center 10 g SAR maxima. Cross-configuration comparisons use the exported native 10 g SAR divided by the accepted power of the corresponding solve.</p></div>
+            </article>
+          </div>
+
+          <div class="substage-heading fig4-heading"><span>03.C</span><div><p>LOADING STUDY · QUANTITATIVE RESULTS</p><h3>Reactance dependence of transmit and SAR efficiency</h3></div><b>15 loaded solves · 0 retries</b></div>
+          <div class="card-grid two chart-grid figure-content fig4-content">
+            <article class="card chart-card">
+              <div class="chart-head"><div><p class="card-label">INDUCTIVE BRANCH · B1<sup>+</sup>/√SAR AT 100 mm</p><h3>The maximum-efficiency region occurs at 75–100 nH</h3></div><span class="status-pill">PASS</span></div>
+              <div class="chart" id="loadingChart" aria-label="Series inductance versus B1 plus over square root maximum 10 gram SAR at 100 millimeters depth"></div>
+              <div class="insight warning"><b>Discrepancy signal</b><span>150 nH falls <strong>36.24%</strong> below the optimum</span></div>
+            </article>
+            <article class="card sweep-summary-card">
+              <p class="card-label">PHYSICAL TREND</p>
+              <div class="trend-row"><b>Capacitive side</b><span>approaches the plain dipole as reactance tends toward zero</span></div>
+              <div class="trend-row"><b>10 → 75 nH</b><span>the 100 mm B1<sup>+</sup>/√SAR metric increases as accepted-power-normalized peak 10 g SAR decreases</span></div>
+              <div class="trend-row"><b>100 → 150 nH</b><span>SAR changes from central to off-center multi-peak structure</span></div>
+              <div class="thought-callout warning"><b>Skeptical check</b><p>The optimum agrees with the paper, but the 150 nH collapse is substantially too strong. Directional agreement is not quantitative agreement.</p></div>
+            </article>
+          </div>
+
+          <article class="card data-table-card wide figure-content fig4-content fig4-table">
+            <div class="build-header"><div><p class="card-label">FIG. 4 · COMPLETE SCALAR SUMMARY</p><h3>Full reactance axis, including the current-run plain point</h3></div><span class="status-pill">16 AXIS POINTS</span></div>
+            <div class="table-scroll"><table><thead><tr><th>Series element</th><th>Reactance Z</th><th>P<sub>accepted</sub></th><th>B1<sup>+</sup> @ 100 mm</th><th>SAR<sub>10g,max</sub></th><th>B1<sup>+</sup>/√SAR @ 100 mm</th><th>Field/SAR regime</th></tr></thead><tbody>
+              <tr><td>1 pF</td><td>−534.08 Ω</td><td>0.008315 W</td><td>0.196128</td><td>1.769032</td><td>0.147459</td><td>capacitive extreme</td></tr>
+              <tr><td>2 pF</td><td>−267.04 Ω</td><td>0.013631 W</td><td>0.193730</td><td>1.624311</td><td>0.152007</td><td>approaching plain</td></tr>
+              <tr><td>5 pF</td><td>−106.82 Ω</td><td>0.027792 W</td><td>0.190370</td><td>1.472374</td><td>0.156888</td><td>approaching plain</td></tr>
+              <tr><td>10 pF</td><td>−53.41 Ω</td><td>0.043622 W</td><td>0.188464</td><td>1.401330</td><td>0.159206</td><td>approaching plain</td></tr>
+              <tr><td>20 pF</td><td>−26.70 Ω</td><td>0.059748 W</td><td>0.187256</td><td>1.360304</td><td>0.160553</td><td>near plain</td></tr>
+              <tr><td>50 pF</td><td>−10.68 Ω</td><td>0.075398 W</td><td>0.186426</td><td>1.333626</td><td>0.161432</td><td>near plain</td></tr>
+              <tr><td>100 pF</td><td>−5.34 Ω</td><td>0.082238 W</td><td>0.186128</td><td>1.324357</td><td>0.161737</td><td>near plain</td></tr>
+              <tr><td>500 pF</td><td>−1.07 Ω</td><td>0.088492 W</td><td>0.185881</td><td>1.316796</td><td>0.161985</td><td>converged</td></tr>
+              <tr><td>1000 pF</td><td>−0.53 Ω</td><td>0.089329 W</td><td>0.185849</td><td>1.315842</td><td>0.162016</td><td>converged</td></tr>
+              <tr class="highlight-row"><td>Plain</td><td>0 Ω</td><td>0.089467 W</td><td>0.185800</td><td>1.315104</td><td>0.162019</td><td><span class="table-tag pass">reference</span></td></tr>
+              <tr><td>10 nH</td><td>18.72 Ω</td><td>0.130896 W</td><td>0.184479</td><td>1.278993</td><td>0.163122</td><td>small gain</td></tr>
+              <tr><td>20 nH</td><td>37.45 Ω</td><td>0.206186 W</td><td>0.184593</td><td>1.251452</td><td>0.165009</td><td>improving</td></tr>
+              <tr><td>50 nH</td><td>93.62 Ω</td><td>0.366129 W</td><td>0.179159</td><td>1.122333</td><td>0.169114</td><td>favorable</td></tr>
+              <tr class="best-row"><td>75 nH</td><td>140.43 Ω</td><td>0.063295 W</td><td>0.177066</td><td>1.030076</td><td>0.174462</td><td><span class="table-tag best">best · +7.68%</span></td></tr>
+              <tr><td>100 nH</td><td>187.24 Ω</td><td>0.016652 W</td><td>0.169979</td><td>0.997515</td><td>0.170191</td><td><span class="table-tag partial">off-center onset</span></td></tr>
+              <tr class="fail-row"><td>150 nH</td><td>280.86 Ω</td><td>0.003604 W</td><td>0.104180</td><td>0.877211</td><td>0.111233</td><td><span class="table-tag fail">magnitude mismatch</span></td></tr>
+            </tbody></table></div>
+          </article>
+
+          <article class="card run-strip wide"><div><span class="run-value">24</span><span>unique solves</span></div><div class="case-dots" id="caseDots" aria-label="Twenty-four successful cases"></div><div><span class="run-value">0</span><span>solver retries</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage" id="stage-04" data-stage="3" data-label="Derive quantitative MRI performance metrics">
+      <div class="stage-frame">
+        <div class="stage-intro">
+          <span class="stage-number">STAGE 04 · QUANTITATIVE FIELD ANALYSIS</span>
+          <p class="stage-kicker">Convert solver outputs into MRI-relevant observables</p>
+          <h2>Derive normalized B1<sup>+</sup>, SAR, and transmit-efficiency metrics</h2>
+          <p>Process complex field exports using an explicit polarization, accepted-power, SAR-averaging, coordinate, and ROI convention; then compare reproduced observables against the publication without concealing disagreement.</p>
+          <button class="reveal-button" type="button" aria-expanded="false">Inspect field analysis and QA <span>→</span></button>
+        </div>
+
+        <div class="stage-detail">
+          <div class="node-ribbon" aria-label="Stage 04 key nodes">
+            <div><b>04.1</b><span>Read complex field exports</span></div><i></i><div><b>04.2</b><span>Derive B1<sup>+</sup> & SAR profiles</span></div><i></i><div><b>04.3</b><span>Apply power normalization</span></div><i></i><div><b>04.4</b><span>Quantify agreement</span></div>
+          </div>
+
+          <article class="card process-card wide">
+            <p class="card-label">PLOTTING CONTRACT</p>
+            <div class="contract-grid">
+              <div><b>B1<sup>+</sup></b><span>circularly polarized transmit component derived from the complex transverse field under the declared B0/sign convention; reported in µT/√W accepted</span></div>
+              <div><b>SAR</b><span>native IEEE C95.3 10 g average, no rescale; reported in W/kg per W accepted</span></div>
+              <div><b>Geometry</b><span>depth profiles and longitudinal distributions use the declared coordinate mapping, sampling grid, ROI, and relative-reference conventions</span></div>
+              <div><b>Loading</b><span>series reactance computed as Z=2πfL or Z=−1/(2πfC), with the current-run unloaded reference at Z=0</span></div>
+            </div>
+          </article>
+
+          <div class="figure-tabs" role="tablist"><button class="figure-tab active" data-figure="fig3" type="button">Geometry study · Source Fig. 3</button><button class="figure-tab" data-figure="fig4" type="button">Loading study · Source Fig. 4</button></div>
+          <article class="card figure-viewer wide">
+            <div class="figure-copy">
+              <p class="card-label" id="figureEyebrow">GEOMETRY STUDY · SOURCE FIGURE 3</p>
+              <h3 id="figureTitle">Length dependence of B1<sup>+</sup>, 10 g SAR, and SAR efficiency</h3>
+              <p id="figureDescription">The accepted-power-normalized B1<sup>+</sup> depth profiles, longitudinal 10 g SAR distributions, and B1<sup>+</sup>/√SAR metric reproduce the reported transition toward a broad geometry plateau.</p>
+              <button class="text-button" id="compareBtn" type="button">Show paper comparison ↗</button>
+            </div>
+            <button class="figure-image-button" id="figureImageButton" type="button" aria-label="Enlarge figure"><img id="mainFigure" src="assets/Fig3_reproduction.png" alt="Figure 3 reproduction"><span>Click to enlarge</span></button>
+          </article>
+
+          <div class="card-grid two">
+            <article class="card evidence-card"><p class="card-label">EVIDENCE INTEGRITY</p><div class="evidence-stat"><b>18</b><span>Fig. 3 raw HDF5 files</span></div><div class="evidence-stat"><b>30</b><span>Fig. 4 raw HDF5 files</span></div><div class="evidence-stat"><b>25</b><span>finite scalar summary rows</span></div></article>
+            <article class="card thought-card"><p class="card-label">VISUAL QA DECISION</p><blockquote>Differences remain visible.</blockquote><p>No axis, label, legend, curve, or panel was clipped. The strong 150 nH discrepancy and the short-length shallow-SAR difference were retained for Stage 99 rather than hidden by rescaling.</p></article>
+          </div>
+          <div class="qa-row"><span><i>✓</i> 12 panels rendered</span><span><i>✓</i> axes & legends legible</span><span><i>✓</i> no overlap or clipping</span><span><i>✓</i> paper pages 4–5 compared</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage final-stage" id="stage-99" data-stage="4" data-label="Validate agreement and scientific scope">
+      <div class="stage-frame">
+        <div class="stage-intro">
+          <span class="stage-number">STAGE 99 · SCIENTIFIC VALIDATION</span>
+          <p class="stage-kicker">Assess agreement, uncertainty, and model-form limitations</p>
+          <h2>Issue an evidence-bounded reproduction verdict</h2>
+          <p>Separate validated agreements from quantitative discrepancies, incomplete tests, and unresolved modeling sensitivities before assigning the final reproduction status and confidence level.</p>
+          <button class="reveal-button" type="button" aria-expanded="false">Open validation audit <span>→</span></button>
+        </div>
+
+        <div class="stage-detail">
+          <article class="card verdict-card wide">
+            <div class="verdict-title"><span class="verdict-icon">≈</span><div><p class="card-label">SCIENTIFIC VERDICT</p><h3>Partially reproduced</h3></div><span class="confidence">MEDIUM CONFIDENCE</span></div>
+            <p class="verdict-summary">Engineering-equivalent agreement was obtained for the conductor-length efficiency plateau, accepted-power normalization, and the favorable 75–100 nH loading region. The 150 nH degradation is materially stronger than reported, while full curve digitization and model-sensitivity reruns remain outstanding.</p>
+          </article>
+
+          <div class="card-grid two audit-grid">
+            <article class="card"><p class="card-label">VALIDATED AGREEMENTS</p><div class="audit-item pass"><b>PASS</b><span>The 300 mm B1<sup>+</sup>/√SAR metric is 0.668% below the geometry-study maximum</span></div><div class="audit-item pass"><b>PASS</b><span>75 nH is the maximum-efficiency case; 100 nH is second; the gain over the unloaded reference is 7.68%</span></div><div class="audit-item pass"><b>PASS</b><span>All 24 configurations use case-specific accepted-power normalization</span></div><div class="audit-item pass"><b>PASS</b><span>All required ROI, finite-value, source-result, and project lock-state checks passed</span></div></article>
+            <article class="card"><p class="card-label">DISCREPANCIES AND OPEN VALIDATION ITEMS</p><div class="audit-item fail"><b>FAIL</b><span>150 nH relative B1<sup>+</sup>/√SAR metric: 0.686 reproduced versus approximately 1.00 in the publication</span></div><div class="audit-item partial"><b>PARTIAL</b><span>The 50 mm accepted-power-normalized peak 10 g SAR is approximately 23% below the value estimated from the source figure</span></div><div class="audit-item partial"><b>OPEN</b><span>Full-curve digitization with Spearman ρ and normalized RMSE</span></div><div class="audit-item partial"><b>OPEN</b><span>Mesh, load-domain size, conductor-thickness, and absorbing-boundary sensitivity analyses</span></div></article>
+          </div>
+
+          <article class="card data-table-card wide scorecard">
+            <div class="build-header"><div><p class="card-label">QUANTITATIVE SCORECARD</p><h3>Paper anchors versus reproduced values</h3></div><span class="status-pill">NO CHERRY-PICKING</span></div>
+            <div class="table-scroll"><table><thead><tr><th>Metric</th><th>Paper anchor</th><th>Reproduction</th><th>Verdict</th></tr></thead><tbody>
+              <tr><td>300 mm B1<sup>+</sup>/√SAR vs geometry maximum</td><td>plateau near 300 mm</td><td>0.162019 vs 0.163108</td><td><span class="table-tag pass">PASS</span></td></tr>
+              <tr><td>50 mm SAR<sub>10g</sub> peak</td><td>≈6.6 W/kg/W</td><td>5.1079 W/kg/W</td><td><span class="table-tag partial">PARTIAL</span></td></tr>
+              <tr><td>Fig. 4 optimum region</td><td>75–100 nH</td><td>75 nH best, 100 nH second</td><td><span class="table-tag pass">PASS</span></td></tr>
+              <tr><td>75 nH B1<sup>+</sup>/√SAR relative to unloaded reference</td><td>≈1.07–1.08</td><td>1.0768</td><td><span class="table-tag pass">PASS</span></td></tr>
+              <tr class="fail-row"><td>150 nH B1<sup>+</sup> / plain</td><td>≈0.82</td><td>0.5607</td><td><span class="table-tag fail">FAIL</span></td></tr>
+              <tr class="fail-row"><td>150 nH B1<sup>+</sup>/√SAR relative to unloaded reference</td><td>≈1.00</td><td>0.6865</td><td><span class="table-tag fail">FAIL</span></td></tr>
+            </tbody></table></div>
+          </article>
+
+          <article class="card hypothesis-card wide">
+            <p class="card-label">STRONGEST SKEPTICAL EXPLANATION</p>
+            <h3>A model-form detail near high inductive loading may exaggerate the current-node and SAR redistribution.</h3>
+            <div class="hypothesis-flow"><span>bridge representation</span><i>+</i><span>local mesh</span><i>+</i><span>conductor thickness</span><i>+</i><span>phantom / boundary</span><i>→</i><b>stronger 150 nH collapse</b></div>
+          </article>
+
+          <article class="card next-card wide">
+            <p class="card-label">NEXT EVIDENCE, IN PRIORITY ORDER</p>
+            <ol class="next-list"><li><b>Refine 75, 100, and 150 nH locally</b><span>record mesh convergence around bridge and gap regions</span></li><li><b>Audit all four bridge coordinates</b><span>compare CST RLCSerial with an explicit lumped-network implementation</span></li><li><b>Test model-form sensitivity</b><span>sheet vs 0.5 mm conductor; larger phantom and PML spacing</span></li><li><b>Digitize complete paper curves</b><span>compute Spearman ρ and normalized RMSE with uncertainty</span></li></ol>
+            <div class="evidence-footer"><span>2 fresh CST projects</span><span>48 HDF5 field exports</span><span>127 raw evidence files</span><span>0 lock files</span><span>source hash verified</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>MRI Hardware Studio · MRI RF Hardware Paper Reproduction · Evidence-backed validation workflow</p><a href="#top">Back to top ↑</a></footer>
+
+  <dialog id="lightbox"><button id="closeLightbox" type="button" aria-label="Close">×</button><img id="lightboxImage" alt="Enlarged evidence figure"></dialog>
+  <script src="app.js"></script>
+</body>
+</html>

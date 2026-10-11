@@ -9,28 +9,27 @@
 
 **MRI Hardware Studio** is an LLM-based agent system targeting the full lifecycle of high-field MRI RF coil design and optimization — from coil topology selection and 3D EM modeling, through circuit co-simulation and B1⁺/SAR analysis, to automated parameter optimization and result reporting. The long-term vision is an AI co-engineer that can autonomously navigate the hardware design loop for MRI coils at any field strength.
 
-**Current release (v1.0 — Phase 1)** delivers a set of foundational workflow skills that give an AI agent the structured knowledge to drive [CST Studio Suite](https://www.3ds.com/products/simulia/cst-studio-suite) through the [CST MCP server](external/CST-MCP): covering geometry modeling, solver setup, circuit matching, B1⁺/SAR post-processing, paper reproduction, and training data preparation.
+**Current release (v1.0 — Phase 1)** provides a CST-centered coil-design skill plus a portable MARIE simulation skill. Together they cover geometry modeling, solver setup, circuit matching, B1⁺/SAR post-processing, paper reproduction, array validation, and UISNR workflows.
 
 ---
 
 ## News 🔥
 
 - **[2026-08]** `mri-coil-design-workflow` v1.0 released — end-to-end skill suite covering basic single-coil design, paper reproduction, and training data preparation pipelines.
+- **[2026-10]** Added the portable `marie-mri-coil-simulation` skill and two interactive, evidence-backed workflow demos.
 - **[coming soon]** Technical report on arXiv — system design, benchmark results, and case studies.
-- **[coming soon]** Demo videos: dipole-from-scratch and paper-reproduction workflows.
 
 ---
 
 ## Demos
 
-### Demo 1 — Dipole Antenna from Scratch (7 T MRI)
+### Demo 1 — Dipole Antenna from Scratch (5 T-class MRI)
 
-> Build a fractionated dipole antenna for 7 T MRI (297 MHz) from an empty project: geometry → materials → ports → solver → circuit matching → B1⁺ post-processing — fully driven by the AI agent.
+> Build and validate a regular dipole antenna at 210 MHz from an empty CST project: geometry → materials → ports → solver → circuit matching → B1⁺ post-processing — fully driven by the AI agent.
 
-<!-- Replace with actual GIF once available -->
-![Dipole from scratch demo — coming soon](docs/assets/demo-dipole-from-scratch.gif)
+[![Dipole from scratch workflow preview](docs/assets/demo-dipole-from-scratch.gif)](https://httgoa.github.io/MRI-Hardware-Studio/demos/dipole-from-scratch/)
 
-*Demo video / GIF coming soon.*
+[Open the interactive HTML walkthrough](https://httgoa.github.io/MRI-Hardware-Studio/demos/dipole-from-scratch/) · 5 T-class, 210 MHz matched-reference case · quantitative B1⁺ evidence normalized to 1 W accepted power.
 
 ---
 
@@ -38,10 +37,11 @@
 
 > Reproduce simulation results from a published MRI coil paper end-to-end: literature parsing → baseline build → parameter sweep → B1⁺/SAR validation → final report.
 
-<!-- Replace with actual GIF once available -->
-![Paper reproduction demo — coming soon](docs/assets/demo-paper-reproduction.gif)
+[![Paper reproduction workflow preview](docs/assets/demo-paper-reproduction.gif)](https://httgoa.github.io/MRI-Hardware-Studio/demos/paper-reproduction/)
 
-*Demo video / GIF coming soon.*
+[Open the interactive HTML walkthrough](https://httgoa.github.io/MRI-Hardware-Studio/demos/paper-reproduction/) · Raaijmakers et al. (MRM 75:1366–1374, 2016) · trend reproduction, discrepancies, and open validation items are reported together.
+
+The GIFs are compressed previews. Publish the full-resolution MP4 recordings as GitHub Release assets so that source videos do not inflate the Git history.
 
 ---
 
@@ -49,17 +49,18 @@
 
 ```
 skills/
-└── mri-coil-design-workflow/     # Main skill suite
-    ├── SKILL.md                  # Skill entry point & routing logic
-    ├── foundations/              # MRI physics, correctness rules, simulation SOP
-    ├── driving/                  # CST/MCP operation rules, tool map, artifact pipeline
-    ├── recipes/                  # Executable task workflows (inspect / build / B1-SAR / data-prep / repro)
-    ├── building-blocks/          # Verified VBA blocks + Tier-B few-shot VBA knowledge
-    ├── templates/                # Tier-A deterministic Jinja2 VBA templates
-    ├── scripts/                  # Python tools: render / lint / execute / repair / postproc
-    ├── pitfalls/                 # Known traps and deterministic error-fix signatures
-    ├── notes/                    # Manual digests, reproduction logs, CST manual index
-    └── design-notes/             # Roadmap research notes
+├── mri-coil-design-workflow/     # CST-centered design and validation suite
+│   ├── SKILL.md                  # Skill entry point & routing logic
+│   ├── foundations/              # MRI physics, correctness rules, simulation SOP
+│   ├── driving/                  # CST/MCP operation rules and tool map
+│   ├── recipes/                  # Executable task workflows
+│   └── scripts/                  # Rendering, linting, execution, and post-processing
+└── marie-mri-coil-simulation/    # MARIE simulation and validation skill
+    ├── SKILL.md                  # Skill entry point and safety contract
+    ├── references/               # Portable workflows and validation guidance
+    ├── assets/                   # MATLAB and agent-harness templates
+    ├── scripts/                  # Documentation and manifest utilities
+    └── tests/                    # UISNR numerical contract tests
 ```
 
 ### Skill Layers at a Glance
@@ -83,6 +84,7 @@ skills/
 | Build coil from scratch | `recipes/build/dipole-from-scratch.md` |
 | B1⁺ field & SAR post-processing | `recipes/b1-sar/b1-field-pipeline.md` |
 | Paper reproduction (end-to-end) | `recipes/paper-reproduction/orchestrator.md` |
+| MARIE simulation, array validation, and UISNR workflows | `skills/marie-mri-coil-simulation/SKILL.md` |
 
 ---
 
@@ -253,4 +255,5 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 - [CST Studio Suite](https://www.3ds.com/products/simulia/cst-studio-suite) by Dassault Systèmes
 - [CST MCP server](external/CST-MCP) — MCP interface for CST Studio Suite
+- [MARIE](https://github.com/cloudmrhub/marie-tools) — open-source MRI electromagnetic simulation toolbox (MIT License)
 - Inspired by [microsoft/ResearchStudio](https://github.com/microsoft/ResearchStudio)

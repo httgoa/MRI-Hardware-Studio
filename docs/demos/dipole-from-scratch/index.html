@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="MRI Hardware Studio walkthrough: autonomous construction, simulation, matching, and B1+ validation of a 5 T-class MRI dipole in CST Studio Suite.">
+  <title>MRI Hardware Studio · Autonomous Dipole Workflow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="hero" id="top">
+    <nav class="masthead">
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">M<span>·</span></span><span><b>MRI Hardware</b> Studio <em>AUTONOMOUS RF WORKFLOW</em></span></a>
+      <div class="mast-actions"><button class="quiet-button" id="resetBtn" type="button">Reset</button><button class="quiet-button" id="fullscreenBtn" type="button">Fullscreen</button></div>
+    </nav>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">SPECIFICATION → EM MODEL → RF MATCHING → B1<sup>+</sup> VALIDATION</p>
+        <h1>Autonomous RF simulation from a <span>blank CST project to quantitative B1<sup>+</sup> evidence</span></h1>
+        <p class="lede">A traceable, API-driven workflow for a 5 T-class MRI dipole: define the numerical experiment, construct and solve the 3D model, tune the matching network at 210 MHz, reconstruct the circularly polarized transmit field, and package the results for scientific review.</p>
+        <div class="hero-actions"><a class="primary-button" href="#stage-01">Explore the workflow <span>↓</span></a><span class="scope-chip">MATCHED-REFERENCE CASE · B1<sup>+</sup> SCOPE</span></div>
+      </div>
+      <div class="hero-dashboard" aria-label="Workflow summary">
+        <div class="signal-orbit"><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="dipole-graphic"><i></i><i></i><b></b></div><div class="frequency"><strong>210</strong><span>MHz target · 5 T-class</span></div></div>
+        <div class="hero-stats"><div><strong>8</strong><span>named build blocks</span></div><div><strong>−41.1</strong><span>dB · S11 at target</span></div><div><strong>1.485</strong><span>µT/√W · ROI peak</span></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="progress-shell" id="progressShell">
+      <div class="progress-head"><div class="progress-brand"><span class="live-dot"></span> MRI Hardware Studio · Autonomous Dipole Workflow</div><div class="progress-context">Current stage · <strong id="currentStageLabel">Simulation specification</strong></div></div>
+      <div class="progress-track" role="navigation" aria-label="Workflow stages"><div class="track-line"><div class="track-fill" id="trackFill"></div></div><button class="step active" data-target="stage-01" type="button"><b>01</b><span>Specification</span></button><button class="step" data-target="stage-02" type="button"><b>02</b><span>Automation</span></button><button class="step" data-target="stage-03" type="button"><b>03</b><span>RF pipeline</span></button><button class="step" data-target="stage-04" type="button"><b>04</b><span>Results & QA</span></button></div>
+    </div>
+
+    <section class="story-stage" id="stage-01" data-stage="0" data-label="Simulation specification">
+      <span class="deep-link-anchor" id="stage-01-reveal" aria-hidden="true"></span>
+      <div class="stage-frame">
+        <div class="stage-intro"><span class="stage-number">STAGE 01 · SIMULATION SPECIFICATION</span><p class="stage-kicker">Freeze the physics, geometry, and evidence contract before execution</p><h2>Define a reproducible matched-reference experiment</h2><p>The task is a workflow-validation case, not a coil-design optimization study. A regular dipole, support stack, and homogeneous tissue load are modeled at a 210 MHz target frequency; the declared output is accepted-power-normalized B1<sup>+</sup>.</p><button class="reveal-button" type="button" aria-expanded="false">Review the simulation brief <span>→</span></button></div>
+        <div class="stage-detail">
+          <article class="card wide scope-card"><div><p class="card-label">SCIENTIFIC SCOPE</p><h3>Matched transmit-field reference at a 5 T-class operating point</h3><p>The model uses an explicit L-match network and an AC co-simulation field source. It should therefore be compared with matched-reference results, not mixed with direct-port, unmatched coil records.</p></div><span class="status-pill neutral">NATIVE SAR OUTSIDE THIS CASE</span></article>
+          <div class="spec-grid">
+            <article class="card spec-card"><span>Operating point</span><strong>210 MHz</strong><p>Simulation target for the 5 T-class proton MRI baseline.</p></article>
+            <article class="card spec-card"><span>Dipole conductor</span><strong>300 × 5 mm</strong><p>Regular center-fed strip with a 2 mm feed gap.</p></article>
+            <article class="card spec-card"><span>Coil loading</span><strong>20.5 mm</strong><p>Conductor-to-phantom separation through the support stack.</p></article>
+            <article class="card spec-card"><span>Tissue model</span><strong>ε<sub>r</sub> 78 · σ 0.47 S/m</strong><p>Homogeneous 270 × 650 × 300 mm phantom.</p></article>
+          </div>
+          <article class="card wide model-card">
+            <div class="model-copy"><p class="card-label">GEOMETRY & MATERIAL STACK</p><h3>One driven conductor above a layered support and tissue load</h3><p>The baseline preserves the original FR-4, polycarbonate, and foam stack used by this matched-reference project. The geometry is created from parameters rather than imported as an opaque model.</p></div>
+            <div class="model-diagram" aria-label="Dipole, support stack, and phantom schematic"><div class="diagram-dipole"><i></i><b></b><i></i></div><div class="layer fr4"><span>FR-4</span></div><div class="layer poly"><span>polycarbonate</span></div><div class="layer foam"><span>foam</span></div><div class="layer phantom"><span>homogeneous tissue phantom</span></div></div>
+          </article>
+          <div class="card-grid two">
+            <article class="card parameter-card"><p class="card-label">NUMERICAL CONTRACT</p><div class="parameter-row"><span>Solver</span><b>HF frequency domain</b></div><div class="parameter-row"><span>Sweep band</span><b>0.15–0.25 GHz</b></div><div class="parameter-row"><span>Field monitors</span><b>H · E · loss</b></div><div class="parameter-row"><span>B0 direction</span><b>+Z</b></div></article>
+            <article class="card review-card"><p class="card-label">PREDECLARED REVIEW QUESTIONS</p><ul><li>Does the automated model produce complete solver and field evidence?</li><li>Can the circuit match be centered at the 210 MHz target?</li><li>Does the 1 W-normalized B1<sup>+</sup> field remain physically plausible inside the phantom ROI?</li></ul></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage" id="stage-02" data-stage="1" data-label="Autonomous model execution">
+      <span class="deep-link-anchor" id="stage-02-reveal" aria-hidden="true"></span>
+      <div class="stage-frame">
+        <div class="stage-intro"><span class="stage-number">STAGE 02 · AUTONOMOUS MODEL EXECUTION</span><p class="stage-kicker">Turn a task specification into a solved CST project without GUI construction</p><h2>Build, verify, solve, and tune through one orchestrated pipeline</h2><p>After project initialization, all geometry creation, solver control, circuit editing, result-tree checks, field export, and post-processing operations are executed programmatically. Named history blocks preserve a readable CST audit trail.</p><button class="reveal-button" type="button" aria-expanded="false">Inspect the automated execution <span>→</span></button></div>
+        <div class="stage-detail">
+          <article class="card wide automation-banner"><div><span class="automation-mark">A</span><div><p class="card-label">EXECUTION MODE</p><h3>API-driven from blank project to evidence bundle</h3></div></div><div class="automation-stats"><span><strong>0</strong> GUI construction clicks</span><span><strong>13</strong> model parameters</span><span><strong>5</strong> final solids</span></div></article>
+          <div class="automation-flow" aria-label="Autonomous workflow sequence"><article class="card flow-step"><b>01</b><span>Initialize</span><small>Fresh MWS project and canonical save path</small></article><i>→</i><article class="card flow-step"><b>02</b><span>Construct</span><small>Eight named parameter and geometry blocks</small></article><i>→</i><article class="card flow-step"><b>03</b><span>Verify</span><small>Parameters, solids, ports, monitors, solver</small></article><i>→</i><article class="card flow-step"><b>04</b><span>Solve</span><small>3D fields and S-parameters</small></article></div>
+          <div class="build-grid">
+            <article class="card build-step"><b>01</b><span>Parameters</span><small>13 declared values</small></article><article class="card build-step"><b>02</b><span>Units & boundaries</span><small>mm · GHz</small></article><article class="card build-step"><b>03</b><span>Materials</span><small>conductors + dielectrics</small></article><article class="card build-step"><b>04</b><span>Dipole geometry</span><small>center feed gap</small></article><article class="card build-step"><b>05</b><span>Support stack</span><small>three dielectric layers</small></article><article class="card build-step"><b>06</b><span>Excitation</span><small>discrete feed port</small></article><article class="card build-step"><b>07</b><span>Field monitors</span><small>H · E · loss</small></article><article class="card build-step"><b>08</b><span>Solver</span><small>HF frequency domain</small></article>
+          </div>
+          <div class="card-grid two">
+            <article class="card gate-card"><p class="card-label">AUTOMATED QUALITY GATES</p><div class="gate-row"><span>Geometry inventory</span><b>PASS</b></div><div class="gate-row"><span>S-parameters and monitors</span><b>PASS</b></div><div class="gate-row"><span>Matched AC H-field source</span><b>PASS</b></div><div class="gate-row"><span>Portable evidence files</span><b>PASS</b></div></article>
+            <article class="card audit-card"><p class="card-label">WHY THE HISTORY MATTERS</p><blockquote>Automation remains scientifically useful only when every transformation is inspectable.</blockquote><p>The model is not delivered as an unexplained final geometry. Each construction operation is named, retained in CST history, and connected to its downstream field evidence.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage" id="stage-03" data-stage="2" data-label="RF matching & B1+ pipeline">
+      <span class="deep-link-anchor" id="stage-03-reveal" aria-hidden="true"></span>
+      <div class="stage-frame">
+        <div class="stage-intro"><span class="stage-number">STAGE 03 · RF MATCHING & B1<sup>+</sup> PIPELINE</span><p class="stage-kicker">Connect circuit performance to a power-normalized transmit field</p><h2>Tune the feed network, run AC co-simulation, and reconstruct B1<sup>+</sup></h2><p>The 3D antenna model is coupled to a series/shunt inductive L-match. The tuned circuit then drives the AC field solution used for HDF5 export and circularly polarized B1<sup>+</sup> reconstruction.</p><button class="reveal-button" type="button" aria-expanded="false">Review matching and field processing <span>→</span></button></div>
+        <div class="stage-detail">
+          <article class="card wide tuning-card"><div class="tuning-copy"><p class="card-label">MATCHING RESULT</p><h3>S11 = −41.1 dB at the 210 MHz target</h3><p>The series inductance was refined from 86 to 88 nH while the 37 nH shunt inductance remained fixed. The resulting match exceeds the predefined −20 dB criterion.</p><div class="network-values"><span>L<sub>t</sub> <b>88 nH</b></span><span>L<sub>p</sub> <b>37 nH</b></span></div></div><div class="tuning-meter" aria-label="S11 result minus 41.1 decibels"><div class="meter-scale"><span>0</span><span>−10</span><span>−20</span><span>−30</span><span>−40 dB</span></div><div class="meter-line"><i style="width:91%"></i><b style="left:91%"></b></div><strong>−41.1 dB</strong><small>S11 at 210 MHz</small></div></article>
+          <div class="pipeline" aria-label="Matched B1 plus processing pipeline"><div class="pipeline-node card"><span>01</span><b>3D EM solution</b><small>S-parameters · H/E/loss monitors</small></div><i>→</i><div class="pipeline-node card"><span>02</span><b>L-match tuning</b><small>88 nH series · 37 nH shunt</small></div><i>→</i><div class="pipeline-node card"><span>03</span><b>AC co-simulation</b><small>Matched H-field at 210 MHz</small></div><i>→</i><div class="pipeline-node card"><span>04</span><b>Evidence export</b><small>HDF5 · PNG · CSV · JSON</small></div></div>
+          <article class="card wide formula-card"><div><p class="card-label">TRANSMIT-FIELD DEFINITION</p><div class="formula">B1<sup>+</sup> = μ₀ · |H<sub>x</sub> − iH<sub>y</sub>| / 2</div></div><div class="formula-divider"></div><div><p class="card-label">ACCEPTED-POWER NORMALIZATION</p><div class="formula">B1<sup>+</sup><sub>1W</sub> = B1<sup>+</sup> / √P<sub>accepted</sub></div></div></article>
+          <div class="metric-grid three"><article class="metric card"><span>Accepted AC power</span><strong>49.996</strong><small>W · measured from V·I*</small><em>MEASURED</em></article><article class="metric card"><span>Field source</span><strong>AC1</strong><small>matched H-field result</small><em>VERIFIED</em></article><article class="metric card"><span>Export sampling</span><strong>2</strong><small>mm · adaptive volume</small><em>HDF5</em></article></div>
+          <article class="card wide method-note"><p class="card-label">NORMALIZATION IS NOT OPTIONAL</p><p>The AC field was generated with approximately 50 W accepted power. Because B1<sup>+</sup> scales with √P, reporting the raw field would overstate the 1 W transmit field by about √50. Every quantitative result below uses the measured accepted power.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-stage results-stage" id="stage-04" data-stage="3" data-label="Quantitative results & QA">
+      <span class="deep-link-anchor" id="stage-04-reveal" aria-hidden="true"></span>
+      <div class="stage-frame">
+        <div class="stage-intro"><span class="stage-number">STAGE 04 · QUANTITATIVE RESULTS & QA</span><p class="stage-kicker">Report the field, the comparison basis, and the limits of the claim</p><h2>Review the matched B1<sup>+</sup> field with an explicit phantom ROI</h2><p>The final evidence combines scalar metrics, spatial maps, one-dimensional profiles, and source data. Peak finding is restricted to the phantom to prevent the conductor near field from dominating the reported performance.</p><button class="reveal-button" type="button" aria-expanded="false">Reveal the result package <span>→</span></button></div>
+        <div class="stage-detail">
+          <div class="metric-grid four"><article class="metric card"><span>ROI peak B1<sup>+</sup></span><strong>1.485</strong><small>µT/√W</small><em>AT 0, 0, −24 MM</em></article><article class="metric card"><span>Central-plane mean</span><strong>0.330</strong><small>µT/√W · Z = −24 mm</small><em>ROI SUMMARY</em></article><article class="metric card"><span>Central-plane SD</span><strong>0.304</strong><small>µT/√W</small><em>SPATIAL SPREAD</em></article><article class="metric card"><span>Coefficient of variation</span><strong>0.919</strong><small>SD / mean</small><em>REPORTED, NOT HIDDEN</em></article></div>
+          <article class="card wide scorecard"><div><p class="card-label">QUANTITATIVE SCORECARD</p><h3>Workflow validation against the matched-reference baseline</h3></div><div class="score-row header"><span>Observable</span><span>This run</span><span>Review basis</span><span>Assessment</span></div><div class="score-row"><span>S11 at 210 MHz</span><b>−41.1 dB</b><span>criterion ≤ −20 dB</span><em>PASS</em></div><div class="score-row"><span>Peak B1<sup>+</sup> at 1 W</span><b>1.485 µT/√W</b><span>reference 1.90 µT/√W</span><em>PHYSICALLY CONSISTENT</em></div><div class="score-row"><span>Field evidence</span><b>maps + profiles</b><span>finite, spatially resolved</span><em>COMPLETE</em></div></article>
+          <article class="media-card card wide"><button class="media-image zoomable" type="button"><img src="assets/B1p_2D_maps.png" alt="Coronal and sagittal accepted-power-normalized B1 plus maps"></button><div class="media-caption"><p class="card-label">SPATIAL B1<sup>+</sup> DISTRIBUTION</p><h3>Coronal plane at Z = −24 mm and sagittal plane at X = 0</h3><p>Both panels report B1<sup>+</sup> normalized to 1 W accepted power. The common 0–1.0 µT color scale emphasizes the spatial distribution; values above the display ceiling remain available in the numerical data.</p></div></article>
+          <article class="media-card card wide"><button class="media-image zoomable" type="button"><img src="assets/B1p_1D_profiles.png" alt="Accepted-power-normalized B1 plus profiles along Y and Z"></button><div class="media-caption"><p class="card-label">CENTERLINE PROFILES</p><h3>Lateral symmetry and depth dependence through the field maximum</h3><p>The Y profile is sampled at X = 0, Z = −24 mm. The Z profile follows X = 0, Y = 0 within the phantom. The accompanying CSV files preserve the numerical samples used to generate both curves.</p></div></article>
+          <div class="card-grid two"><article class="card warning-card"><p class="card-label">ROI CONTROL</p><h3>Exclude the conductor singularity from the performance metric</h3><p>The full export contains a 64.96 µT maximum adjacent to the PEC conductor. That value is a near-field sampling artifact for this comparison. The reported 1.485 µT/√W peak is restricted to Z ≤ −24 mm inside the phantom.</p></article><article class="card verdict-card"><p class="card-label">EVIDENCE-BOUNDED CONCLUSION</p><div class="verdict"><span>VALIDATED</span><b>Autonomous matched-B1<sup>+</sup> workflow</b></div><p>The case demonstrates a complete and traceable build–solve–match–export–analyze pipeline with a physically plausible transmit field. It does not establish coil-design superiority and does not claim native SAR validation.</p></article></div>
+          <article class="card wide evidence-card"><div><p class="card-label">PORTABLE RESULT PACKAGE</p><h3>Inspect the numerical evidence behind the figures</h3><p>Every visualization is backed by a compact, reviewable data product.</p></div><div class="download-grid"><a href="assets/B1p_1D_alongY.csv" download><b>Y centerline</b><span>CSV ↓</span></a><a href="assets/B1p_1D_alongZ.csv" download><b>Z centerline</b><span>CSV ↓</span></a><a href="assets/stats.json" download><b>Run statistics</b><span>JSON ↓</span></a><a href="assets/B1p_2D_maps.png" download><b>B1<sup>+</sup> maps</b><span>PNG ↓</span></a></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div><span class="brand-mark small">M<span>·</span></span><p><b>MRI Hardware Studio</b><br>Evidence-first automation for MRI RF hardware.</p></div><a href="#top">Back to top ↑</a></footer>
+  <dialog class="lightbox" id="imageDialog"><button type="button" class="dialog-close" data-close-dialog aria-label="Close image">×</button><img alt="Expanded result figure"></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
