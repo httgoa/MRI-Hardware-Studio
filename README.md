@@ -29,6 +29,8 @@
 
 [![Dipole from scratch workflow preview](docs/assets/demo-dipole-from-scratch.gif)](https://httgoa.github.io/MRI-Hardware-Studio/demos/dipole-from-scratch/)
 
+*GIF preview only. For the complete workflow and implementation details, [watch the full video](https://github.com/httgoa/MRI-Hardware-Studio/releases/latest/download/dipole_from_scratch_demo.mp4).*
+
 [Open the interactive HTML walkthrough](https://httgoa.github.io/MRI-Hardware-Studio/demos/dipole-from-scratch/) · 5 T-class, 210 MHz matched-reference case · quantitative B1⁺ evidence normalized to 1 W accepted power.
 
 ---
@@ -39,9 +41,9 @@
 
 [![Paper reproduction workflow preview](docs/assets/demo-paper-reproduction.gif)](https://httgoa.github.io/MRI-Hardware-Studio/demos/paper-reproduction/)
 
-[Open the interactive HTML walkthrough](https://httgoa.github.io/MRI-Hardware-Studio/demos/paper-reproduction/) · Raaijmakers et al. (MRM 75:1366–1374, 2016) · trend reproduction, discrepancies, and open validation items are reported together.
+*GIF preview only. For the complete workflow and detailed validation process, [watch the full video](https://github.com/httgoa/MRI-Hardware-Studio/releases/latest/download/paper_repro_demo_video.mp4).*
 
-The GIFs are compressed previews. Publish the full-resolution MP4 recordings as GitHub Release assets so that source videos do not inflate the Git history.
+[Open the interactive HTML walkthrough](https://httgoa.github.io/MRI-Hardware-Studio/demos/paper-reproduction/) · Raaijmakers et al. (MRM 75:1366–1374, 2016) · trend reproduction, discrepancies, and open validation items are reported together.
 
 ---
 
