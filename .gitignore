@@ -42,10 +42,6 @@ results_data_prep/
 results_data_prep_APFD/
 results_paper_repro/
 
-# Source recordings are published as GitHub Release assets, not Git blobs
-*.mp4
-*.mov
-
 # Compiled VBA artifacts (generated at runtime)
 **/__pycache__/
 scripts/__pycache__/

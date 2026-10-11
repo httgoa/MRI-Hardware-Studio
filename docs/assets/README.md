@@ -7,8 +7,8 @@ This directory contains visual assets for the repository README and documentatio
 | File | Description | Status |
 |---|---|---|
 | `logo.png` / `logo.svg` | MRI Hardware Studio logo | 📋 Planned |
-| `demo-dipole-from-scratch.gif` | Demo: 7 T dipole build from blank project | 📋 Coming soon |
-| `demo-paper-reproduction.gif` | Demo: fractionated dipole paper reproduction | 📋 Coming soon |
+| `demo-dipole-from-scratch.gif` | Demo: 5 T-class dipole build from a blank project | ✅ Included |
+| `demo-paper-reproduction.gif` | Demo: fractionated dipole paper reproduction | ✅ Included |
 | `architecture.png` | System architecture diagram | 📋 Planned |
 
-Place GIF/video files here once available and update the `README.md` image links.
+The GIF previews are linked from the repository README and open the corresponding interactive HTML walkthroughs.

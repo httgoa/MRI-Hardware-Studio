@@ -13,4 +13,4 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/docs/`. Configure GitHub Pages to deploy from the `main` branch and `/docs` directory.
 
-The source MP4 recordings are intentionally ignored by Git. Upload them as GitHub Release assets; the tracked 1280 × 720 GIFs in `docs/assets/` are optimized README previews. Publication-derived comparison panels must retain their bibliographic attribution and be redistributed only when permitted by the applicable source terms.
+The tracked 1280 × 720 GIFs in `docs/assets/` are optimized README previews, and each preview links to the complete interactive HTML walkthrough on GitHub Pages. Publication-derived comparison panels must retain their bibliographic attribution and be redistributed only when permitted by the applicable source terms.
